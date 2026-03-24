@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import { BeeFollower } from './components/BeeFollower'
 import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
 import About from './pages/About'
@@ -12,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col gradient-bg">
+        <BeeFollower />
         <Navbar />
         <AnimatePresence mode="wait">
           <motion.main

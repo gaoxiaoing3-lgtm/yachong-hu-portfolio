@@ -37,3 +37,13 @@
     @apply max-w-7xl mx-auto;
   }
 }
+
+/* 蜜蜂翅膀扇动动画 */
+@keyframes wing-flap {
+  0%, 100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(60deg);
+  }
+}
