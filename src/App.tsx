@@ -11,14 +11,14 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col gradient-bg">
+      <div className="min-h-[100dvh] flex flex-col gradient-bg">
         <Navbar />
         <AnimatePresence mode="wait">
           <motion.main
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="flex-grow"
           >
             <Routes>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Clash+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,35 +7,79 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 160 20% 5%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  * {
+    box-sizing: border-box;
   }
-}
 
-@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
-    @apply bg-white text-gray-900 font-sans antialiased;
+    @apply bg-white text-ink-900 font-body antialiased;
+    font-optical-sizing: auto;
   }
 }
 
 @layer components {
   .gradient-bg {
-    @apply bg-gradient-to-br from-primary-50 via-white to-primary-100;
+    @apply bg-surface-50;
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl;
-  }
-  
+
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24;
+    @apply px-6 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-32;
   }
-  
+
   .container-custom {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-8xl mx-auto;
+  }
+
+  .container-narrow {
+    @apply max-w-5xl mx-auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .card-surface {
+    @apply bg-surface-50 border border-surface-200;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Clash Display', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-400;
   }
 }

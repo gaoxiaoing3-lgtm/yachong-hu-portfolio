@@ -1,289 +1,189 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Filter, ExternalLink, Github, Eye } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Sparkles, Layers } from 'lucide-react'
+
+const filters = ['全部', '虚拟制作', '舞美设计', '工具开发']
+
+const projects = [
+  {
+    id: 1,
+    title: '智能虚拟演播室系统',
+    category: '虚拟制作',
+    description: '基于AI的实时虚拟演播室解决方案，支持多机位虚拟运镜与直播推流。',
+    tech: ['Unity', 'AI推理', '实时渲染'],
+    accent: 'bg-primary-600',
+  },
+  {
+    id: 2,
+    title: '沉浸式舞美设计平台',
+    category: '舞美设计',
+    description: '3D可视化舞美设计与预演系统，支持VR沉浸式评审。',
+    tech: ['Unreal Engine', 'Blender', 'VR'],
+    accent: 'bg-ink-800',
+  },
+  {
+    id: 3,
+    title: 'AIGC艺术创作工具',
+    category: '工具开发',
+    description: '专为艺术家设计的AI辅助创作工作流，降低创意落地门槛。',
+    tech: ['Python', 'Diffusion', 'WebGL'],
+    accent: 'bg-primary-800',
+  },
+  {
+    id: 4,
+    title: '虚拟发布会直播系统',
+    category: '虚拟制作',
+    description: '为品牌活动构建的虚拟舞台与实时合成直播管线。',
+    tech: ['UE5', 'Notch', 'LiveCore'],
+    accent: 'bg-ink-700',
+  },
+  {
+    id: 5,
+    title: '舞台灯光预演工具',
+    category: '舞美设计',
+    description: '基于物理渲染的灯光设计预演工具，支持实时参数调整。',
+    tech: ['MA3D', 'D5 Render', 'TouchDesigner'],
+    accent: 'bg-primary-700',
+  },
+  {
+    id: 6,
+    title: '多模态AI分镜助手',
+    category: '工具开发',
+    description: '输入剧本描述自动生成故事板与分镜脚本的AI工具。',
+    tech: ['GPT-4V', 'Stable Diffusion', 'React'],
+    accent: 'bg-ink-900',
+  },
+]
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeFilter, setActiveFilter] = useState('全部')
 
-  const categories = [
-    { id: 'all', name: '全部作品' },
-    { id: 'virtual', name: '虚拟演播室' },
-    { id: 'stage', name: '舞美设计' },
-    { id: 'aigc', name: 'AIGC工具' },
-    { id: 'other', name: '其他项目' },
-  ]
-
-  const projects = [
-    {
-      id: 1,
-      title: '智能虚拟演播室系统',
-      category: 'virtual',
-      description: '基于AI的实时虚拟演播室解决方案，支持多机位切换和实时特效',
-      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800',
-      tech: ['Unity', 'AI', '实时渲染', 'WebRTC'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-    {
-      id: 2,
-      title: '沉浸式舞美设计平台',
-      category: 'stage',
-      description: '3D可视化舞美设计与预览系统，支持VR体验',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800',
-      tech: ['Blender', 'Unreal Engine', 'VR', 'Three.js'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-    {
-      id: 3,
-      title: 'AIGC艺术创作工具',
-      category: 'aigc',
-      description: '专为艺术家设计的AI辅助创作工具，支持多种艺术风格',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800',
-      tech: ['Python', 'Stable Diffusion', 'WebGL', 'React'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-    {
-      id: 4,
-      title: '实时动作捕捉系统',
-      category: 'virtual',
-      description: '低成本高精度的实时动作捕捉解决方案',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800',
-      tech: ['OpenCV', 'TensorFlow', 'WebSocket', 'Node.js'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-    {
-      id: 5,
-      title: '数字舞台灯光系统',
-      category: 'stage',
-      description: '智能化舞台灯光控制系统，支持实时编程',
-      image: 'https://images.unsplash.com/photo-1501281667305-0d4e0ab5c5e5?auto=format&fit=crop&w=800',
-      tech: ['C++', 'DMX', 'OpenGL', 'Qt'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-    {
-      id: 6,
-      title: 'AI视频特效生成器',
-      category: 'aigc',
-      description: '基于深度学习的视频特效自动生成工具',
-      image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800',
-      tech: ['PyTorch', 'FFmpeg', 'FastAPI', 'Vue.js'],
-      links: {
-        demo: '#',
-        github: '#',
-      },
-    },
-  ]
-
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter)
+  const filteredProjects = activeFilter === '全部'
+    ? projects
+    : projects.filter(p => p.category === activeFilter)
 
   return (
     <div className="section-padding">
       <div className="container-custom">
+
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            作品集
+          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Portfolio</span>
+          <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-900 mt-3 leading-tight">
+            项目作品
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            探索我在虚拟制作、舞美设计和AIGC工具开发领域的创新项目
+          <p className="text-ink-500 text-lg mt-4 max-w-xl leading-relaxed">
+            涵盖虚拟演播室、舞美预演与AI创作工具的完整项目档案。
           </p>
         </motion.div>
 
-        {/* Filters */}
+        {/* Filter tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mb-12"
+          transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap gap-3 mb-12"
         >
-          <div className="flex items-center justify-center mb-6">
-            <Filter className="w-5 h-5 text-gray-500 mr-2" />
-            <span className="text-gray-700 font-medium">项目分类</span>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all ${
-                  activeFilter === category.id
-                    ? 'bg-primary-500 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                activeFilter === filter
+                  ? 'bg-ink-900 text-white border-ink-900'
+                  : 'bg-white text-ink-500 border-ink-200 hover:border-ink-400 hover:text-ink-700'
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg card-hover h-full flex flex-col">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-800 rounded-full text-sm font-medium">
-                      {categories.find(c => c.id === project.category)?.name}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6 flex-grow">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  
-                  {/* Tech Stack */}
-                  <div className="mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
-                        >
+        {/* Projects grid — asymmetric masonry-inspired layout */}
+        <motion.div
+          layout
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95, y: 24 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.07,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group cursor-pointer"
+              >
+                {/* Card */}
+                <div className="bg-surface-100 rounded-2xl overflow-hidden h-full flex flex-col">
+                  {/* Visual block */}
+                  <div className={`h-52 ${project.accent} relative overflow-hidden flex items-center justify-center`}>
+                    <Layers className="w-12 h-12 text-white/30" />
+                    {/* Top-right tech tags */}
+                    <div className="absolute top-4 right-4 flex flex-wrap gap-2 justify-end">
+                      {project.tech.slice(0, 2).map((tech) => (
+                        <span key={tech} className="px-2 py-1 bg-white/15 text-white/90 rounded-full text-xs font-mono backdrop-blur-sm">
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
-                </div>
 
-                {/* Project Links */}
-                <div className="px-6 pb-6 pt-4 border-t border-gray-100">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <a
-                        href={project.links.demo}
-                        className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Eye className="w-4 h-4 mr-1" />
-                        演示
-                      </a>
-                      <a
-                        href={project.links.github}
-                        className="inline-flex items-center text-gray-700 hover:text-gray-900 font-medium"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="w-4 h-4 mr-1" />
-                        代码
-                      </a>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <span className="font-mono text-xs text-primary-600 tracking-widest uppercase">{project.category}</span>
+                    <h3 className="font-display text-xl font-semibold text-ink-900 mt-2 mb-3 group-hover:text-primary-600 transition-colors leading-snug">
+                      {project.title}
+                    </h3>
+                    <p className="text-ink-500 text-sm leading-relaxed flex-grow">{project.description}</p>
+                    <div className="flex items-center justify-between mt-4 pt-4 border-t border-surface-200">
+                      <div className="flex gap-2">
+                        {project.tech.map((tech) => (
+                          <span key={tech} className="px-2 py-0.5 bg-surface-200 text-ink-600 rounded text-xs font-mono">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
                     </div>
-                    <a
-                      href={project.links.demo}
-                      className="inline-flex items-center text-gray-500 hover:text-gray-700"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 flex items-center justify-center">
-              <Filter className="w-12 h-12 text-gray-400" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-              暂无项目
-            </h3>
-            <p className="text-gray-600 mb-6">
-              当前分类下没有找到项目，请尝试其他分类
-            </p>
-            <button
-              onClick={() => setActiveFilter('all')}
-              className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
-            >
-              查看全部项目
-            </button>
-          </motion.div>
-        )}
-
-        {/* Stats */}
+        {/* Stats row */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 pt-12 border-t border-gray-200"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-surface-200 rounded-2xl overflow-hidden"
         >
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">
-                {projects.length}+
-              </div>
-              <div className="text-gray-600">完成项目</div>
+          {[
+            { label: '完成项目', value: '6+' },
+            { label: '服务客户', value: '5+' },
+            { label: '服务领域', value: '3' },
+            { label: '持续研究', value: 'AIGC' },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-surface-50 p-8 text-center">
+              <div className="font-display text-3xl font-semibold text-ink-900 mb-1">{stat.value}</div>
+              <div className="text-ink-400 text-sm font-mono">{stat.label}</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">
-                5+
-              </div>
-              <div className="text-gray-600">合作客户</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">
-                3+
-              </div>
-              <div className="text-gray-600">技术领域</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">
-                100%
-              </div>
-              <div className="text-gray-600">项目满意度</div>
-            </div>
-          </div>
+          ))}
         </motion.div>
+
       </div>
     </div>
   )

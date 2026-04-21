@@ -1,150 +1,214 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Video, Palette, Cpu } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { StockTracker } from '../components/StockTracker'
 
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemUp = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const itemLeft = {
+  hidden: { opacity: 0, x: -40 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const itemRight = {
+  hidden: { opacity: 0, x: 40 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+const services = [
+  {
+    label: '01',
+    title: '虚拟演播室制作',
+    description: 'AI驱动的实时虚拟场景生成与渲染管线，支持多机位虚拟运镜与直播推流。',
+  },
+  {
+    label: '02',
+    title: '舞美效果图设计',
+    description: '将舞美概念转化为高精度3D预演动画，提供沉浸式可视化评审体验。',
+  },
+  {
+    label: '03',
+    title: '虚拟项目落地',
+    description: '从技术验证到生产交付，端到端解决虚拟制作场景落地难题。',
+  },
+  {
+    label: '04',
+    title: 'AIGC工具开发',
+    description: '基于扩散模型与多模态架构，构建定制化AI辅助创作工作流。',
+  },
+]
+
+const featuredProjects = [
+  {
+    title: '智能虚拟演播室系统',
+    category: '虚拟制作',
+    description: '基于AI的实时虚拟演播室解决方案',
+    tech: ['Unity', 'AI', '实时渲染'],
+    accent: 'bg-primary-500',
+  },
+  {
+    title: '沉浸式舞美设计平台',
+    category: '舞美设计',
+    description: '3D可视化舞美设计与预演系统',
+    tech: ['Blender', 'Unreal Engine', 'VR'],
+    accent: 'bg-ink-700',
+  },
+  {
+    title: 'AIGC艺术创作工具',
+    category: '工具开发',
+    description: '专为艺术家设计的AI辅助创作工具',
+    tech: ['Python', 'AI模型', 'WebGL'],
+    accent: 'bg-primary-700',
+  },
+]
+
 const Home = () => {
-  const services = [
-    {
-      icon: <Video className="w-8 h-8" />,
-      title: '虚拟演播室制作',
-      description: '专业的虚拟演播室设计与实现，打造沉浸式直播体验',
-    },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: '舞美效果图设计',
-      description: '创意舞美设计，将艺术概念转化为视觉现实',
-    },
-    {
-      icon: <Cpu className="w-8 h-8" />,
-      title: '虚拟项目落地',
-      description: '从概念到实现的完整虚拟项目解决方案',
-    },
-    {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: 'AIGC工具开发',
-      description: '定制化AIGC工具，提升艺术创作效率',
-    },
-  ]
-
-  const featuredProjects = [
-    {
-      title: '智能虚拟演播室系统',
-      category: '虚拟制作',
-      description: '基于AI的实时虚拟演播室解决方案',
-      tech: ['Unity', 'AI', '实时渲染'],
-    },
-    {
-      title: '沉浸式舞美设计平台',
-      category: '舞美设计',
-      description: '3D可视化舞美设计与预览系统',
-      tech: ['Blender', 'Unreal Engine', 'VR'],
-    },
-    {
-      title: 'AIGC艺术创作工具',
-      category: '工具开发',
-      description: '专为艺术家设计的AI辅助创作工具',
-      tech: ['Python', 'AI模型', 'WebGL'],
-    },
-  ]
-
   return (
     <div>
       {/* Hero Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-end">
+
+            {/* Left column: text — offset vertically */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={itemLeft}
+              initial="hidden"
+              animate="show"
+              className="lg:col-span-7 lg:pt-24 space-y-8"
             >
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-6">
-                <Sparkles className="w-4 h-4 mr-2" />
-                深度耕耘艺术设计类AIGC工具类制作人
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink-200 text-sm text-ink-600 font-mono">
+                <span className="w-2 h-2 rounded-full bg-primary-500" />
+                AIGC 动画师 & 虚拟制作
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                用<span className="text-primary-500">科技</span>创造
-                <span className="text-primary-500">艺术</span>的未来
+
+              <h1 className="font-display text-5xl md:text-7xl font-semibold text-ink-900 leading-[1.05] tracking-tight text-balance">
+                胡亚崇
+                <br />
+                <span className="text-primary-600">构建虚拟</span>
+                <br />
+                视觉叙事
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                我是胡亚崇，专注于虚拟演播室制作、舞美效果图设计、虚拟项目落地。
-                将前沿技术与艺术创意结合，打造卓越的视觉体验。
+
+              <p className="text-lg text-ink-500 max-w-lg leading-relaxed">
+                专注虚拟演播室、舞美预演与AIGC工具开发。
+                作品集涵盖沉浸式舞台设计、实时渲染引擎与多模态AI创作系统。
               </p>
-              <div className="flex flex-wrap gap-4">
+
+              <div className="flex items-center gap-4">
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors font-medium"
+                  className="inline-flex items-center px-8 py-4 bg-ink-900 text-white rounded-full hover:bg-ink-700 transition-colors font-medium text-base"
                 >
-                  查看作品集
+                  作品集
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
                 <a
                   href="mailto:contact@example.com"
-                  className="inline-flex items-center px-6 py-3 border-2 border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 transition-colors font-medium"
+                  className="inline-flex items-center px-8 py-4 border border-ink-300 text-ink-700 rounded-full hover:bg-ink-50 transition-colors font-medium text-base"
                 >
-                  联系合作
+                  合作接洽
                 </a>
               </div>
             </motion.div>
+
+            {/* Right column: visual block — asymmetric */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              variants={itemRight}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 relative"
             >
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-primary-300">
-                {/* Placeholder for profile image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <Sparkles className="w-24 h-24 text-white" />
-                    </div>
-                    <p className="text-white text-lg">个人形象照片位置</p>
-                    <p className="text-white/80 text-sm">可替换为专业照片</p>
-                  </div>
+              {/* Offset layered composition */}
+              <div className="relative aspect-[4/5] w-full max-w-sm ml-auto">
+                <div className="absolute inset-0 rounded-4xl bg-ink-900 translate-x-6 translate-y-6" />
+                <div className="relative w-full h-full rounded-4xl bg-surface-200 overflow-hidden flex items-center justify-center">
+                  <Sparkles className="w-20 h-20 text-ink-400" />
+                  <span className="absolute bottom-4 left-4 text-sm text-ink-500 font-mono">个人形象区</span>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-500 rounded-2xl -z-10 animate-float" />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="section-padding bg-gray-50">
+      {/* Services Section — asymmetric 2+1 layout */}
+      <section className="section-padding bg-ink-900">
         <div className="container-custom">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              专业服务领域
+            <span className="font-mono text-sm text-primary-400 tracking-widest uppercase">Services</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mt-4">
+              专业服务
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              专注于AIGC与虚拟制作的前沿领域，提供全方位的创意技术服务
-            </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
+
+          {/* Asymmetric: 2+1+1 not equal columns */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {services.slice(0, 2).map((service, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
+                key={service.label}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-lg card-hover"
+                transition={{ delay: index * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-ink-800 rounded-2xl p-8 lg:p-10 group hover:bg-ink-700 transition-colors"
               >
-                <div className="p-3 bg-primary-50 text-primary-500 rounded-lg w-fit mb-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <span className="font-mono text-xs text-primary-400 tracking-widest">{service.label}</span>
+                <h3 className="font-display text-2xl font-semibold text-white mt-4 mb-4">
                   {service.title}
                 </h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-ink-400 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 mt-6">
+            {services.slice(2).map((service, index) => (
+              <motion.div
+                key={service.label}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (index + 2) * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-ink-800 rounded-2xl p-8 lg:p-10 group hover:bg-ink-700 transition-colors"
+              >
+                <span className="font-mono text-xs text-primary-400 tracking-widest">{service.label}</span>
+                <h3 className="font-display text-2xl font-semibold text-white mt-4 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-ink-400 leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -154,98 +218,123 @@ const Home = () => {
       {/* Stock Tracker Section */}
       <StockTracker />
 
-      {/* Featured Projects */}
+      {/* Featured Projects — magazine layout */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="flex justify-between items-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+          >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Work</span>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 mt-2">
                 精选项目
               </h2>
-              <p className="text-gray-600">探索我的最新作品与创新实践</p>
             </div>
             <Link
               to="/portfolio"
-              className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
+              className="inline-flex items-center text-ink-600 hover:text-ink-900 font-medium text-base shrink-0"
             >
-              查看全部项目
+              全部项目
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl overflow-hidden shadow-lg card-hover">
-                  <div className="h-48 bg-gradient-to-r from-primary-100 to-primary-200 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                          <Sparkles className="w-10 h-10 text-white" />
-                        </div>
-                        <p className="text-white font-medium">项目预览图</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-sm font-medium">
-                        {project.category}
+          </motion.div>
+
+          {/* Magazine layout: large left + stacked right */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Large card — left span 2 */}
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-2 group cursor-pointer"
+            >
+              <div className="bg-surface-100 rounded-2xl overflow-hidden">
+                <div className="h-72 bg-ink-900 relative overflow-hidden flex items-center justify-center">
+                  <Sparkles className="w-16 h-16 text-ink-600" />
+                  <div className="absolute bottom-4 left-4 flex gap-2">
+                    {featuredProjects[0].tech.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs font-mono backdrop-blur-sm">
+                        {tech}
                       </span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
+                <div className="p-8">
+                  <span className="font-mono text-xs text-primary-600 tracking-widest uppercase">{featuredProjects[0].category}</span>
+                  <h3 className="font-display text-2xl font-semibold text-ink-900 mt-2 mb-3 group-hover:text-primary-600 transition-colors">
+                    {featuredProjects[0].title}
+                  </h3>
+                  <p className="text-ink-500 leading-relaxed">{featuredProjects[0].description}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Stacked right cards */}
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {featuredProjects.slice(1).map((project) => (
+                <motion.div
+                  key={project.title}
+                  variants={itemUp}
+                  className="bg-surface-100 rounded-2xl overflow-hidden group cursor-pointer"
+                >
+                  <div className="h-36 bg-ink-800 relative overflow-hidden flex items-center justify-center">
+                    <Sparkles className="w-10 h-10 text-ink-600" />
+                  </div>
+                  <div className="p-6">
+                    <span className="font-mono text-xs text-primary-600 tracking-widest uppercase">{project.category}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink-900 mt-2 mb-2 group-hover:text-primary-600 transition-colors leading-snug">
+                      {project.title}
+                    </h3>
+                    <p className="text-ink-500 text-sm leading-relaxed">{project.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-500 to-primary-600">
-        <div className="container-custom text-center">
+      <section className="section-padding bg-surface-200">
+        <div className="container-custom">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              准备好开始你的下一个项目了吗？
-            </h2>
-            <p className="text-primary-100 text-xl mb-8 max-w-2xl mx-auto">
-              让我们一起将创意转化为令人惊叹的视觉现实
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="max-w-2xl">
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 mb-4 text-balance">
+                有项目合作意向？
+              </h2>
+              <p className="text-ink-500 text-lg leading-relaxed">
+                承接虚拟演播室、舞美预演、AIGC工具开发等项目合作。
+                可提供技术方案评估与报价。
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
               <a
                 href="mailto:contact@example.com"
-                className="inline-flex items-center px-8 py-4 bg-white text-primary-600 rounded-lg hover:bg-gray-100 transition-colors font-medium text-lg"
+                className="inline-flex items-center px-8 py-4 bg-ink-900 text-white rounded-full hover:bg-ink-700 transition-colors font-medium text-base"
               >
                 立即联系
-                <ArrowRight className="w-6 h-6 ml-2" />
+                <ArrowRight className="w-5 h-5 ml-2" />
               </a>
               <Link
                 to="/about"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-lg hover:bg-white/10 transition-colors font-medium text-lg"
+                className="inline-flex items-center px-8 py-4 border border-ink-300 text-ink-700 rounded-full hover:bg-ink-50 transition-colors font-medium text-base"
               >
                 了解更多
               </Link>
