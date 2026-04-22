@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles, Sun, Moon } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
+import BrandMark from './BrandMark'
 
 type NavbarProps = {
   theme: 'day' | 'night'
@@ -30,14 +31,8 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-ink-900 flex items-center justify-center shrink-0 group-hover:bg-primary-600 transition-colors">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <div>
-              <span className="text-base font-display font-semibold text-ink-900">胡亚崇</span>
-              <span className="hidden sm:inline text-ink-400 text-sm ml-2">AIGC动画师</span>
-            </div>
+          <Link to="/" className="group">
+            <BrandMark size="sm" subtitle="XR Production" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,7 +45,7 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
                   location.pathname === item.path
                     ? 'text-ink-900'
                     : 'text-ink-500 hover:text-ink-900'
-                }`}
+                } font-ui`}
               >
                 {item.name}
                 {location.pathname === item.path && (
@@ -66,15 +61,29 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={onToggleTheme}
-              className="inline-flex items-center gap-2 rounded-full border border-surface-200 bg-white/70 px-4 py-2 text-sm text-ink-700 transition-colors hover:bg-surface-100"
+              className="theme-toggle inline-flex items-center rounded-full p-1.5"
               aria-label="切换白天夜间模式"
             >
-              {theme === 'day' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-              <span>{theme === 'day' ? '夜间' : '白天'}</span>
+              <span
+                className={`theme-toggle__option inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium font-ui transition-all ${
+                  theme === 'day' ? 'theme-toggle__option--active' : ''
+                }`}
+              >
+                <Sun className="h-4 w-4" />
+                白天
+              </span>
+              <span
+                className={`theme-toggle__option inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium font-ui transition-all ${
+                  theme === 'night' ? 'theme-toggle__option--active' : ''
+                }`}
+              >
+                <Moon className="h-4 w-4" />
+                夜间
+              </span>
             </button>
             <a
               href="mailto:contact@example.com"
-              className="hidden md:inline-flex items-center px-5 py-2 bg-ink-900 text-white text-sm rounded-full hover:bg-ink-700 transition-colors font-medium"
+              className="hidden md:inline-flex items-center px-5 py-2 bg-ink-900 text-white text-sm rounded-full hover:bg-ink-700 transition-colors font-medium font-ui"
             >
               合作接洽
             </a>
@@ -84,10 +93,23 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={onToggleTheme}
-              className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
+              className="theme-toggle inline-flex items-center rounded-full p-1"
               aria-label="切换白天夜间模式"
             >
-              {theme === 'day' ? <Moon className="w-4 h-4 text-ink-700" /> : <Sun className="w-4 h-4 text-ink-700" />}
+              <span
+                className={`theme-toggle__option inline-flex items-center justify-center rounded-full p-2 transition-all ${
+                  theme === 'day' ? 'theme-toggle__option--active' : ''
+                }`}
+              >
+                <Sun className="w-4 h-4" />
+              </span>
+              <span
+                className={`theme-toggle__option inline-flex items-center justify-center rounded-full p-2 transition-all ${
+                  theme === 'night' ? 'theme-toggle__option--active' : ''
+                }`}
+              >
+                <Moon className="w-4 h-4" />
+              </span>
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -115,7 +137,7 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors font-ui ${
                       location.pathname === item.path
                         ? 'bg-ink-900 text-white'
                         : 'text-ink-600 hover:bg-surface-100'
@@ -132,9 +154,24 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
                 </a>
                 <button
                   onClick={onToggleTheme}
-                  className="block w-full px-4 py-3 border border-surface-200 rounded-xl text-sm text-ink-700 text-center font-medium"
+                  className="theme-toggle block w-full rounded-xl p-1.5"
                 >
-                  切换到{theme === 'day' ? '夜间' : '白天'}模式
+                  <span className="flex items-center gap-1">
+                    <span
+                      className={`theme-toggle__option flex-1 rounded-lg px-4 py-3 text-sm text-center font-medium font-ui ${
+                        theme === 'day' ? 'theme-toggle__option--active' : ''
+                      }`}
+                    >
+                      白天
+                    </span>
+                    <span
+                      className={`theme-toggle__option flex-1 rounded-lg px-4 py-3 text-sm text-center font-medium font-ui ${
+                        theme === 'night' ? 'theme-toggle__option--active' : ''
+                      }`}
+                    >
+                      夜间
+                    </span>
+                  </span>
                 </button>
               </div>
             </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Sparkles, Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
+import BrandMark from './BrandMark'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -39,15 +40,7 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-primary-600 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <span className="font-display text-xl font-semibold">胡亚崇</span>
-                <p className="text-ink-400 text-sm">AIGC动画师 & 虚拟制作</p>
-              </div>
-            </div>
+            <BrandMark tone="light" size="md" subtitle="XR Production & Virtual Craft" />
             <p className="text-ink-400 text-sm leading-relaxed max-w-xs">
               专注虚拟演播室制作、舞美效果图设计、虚拟项目落地与AIGC工具开发。将前沿技术与艺术创意结合，打造卓越视觉体验。
             </p>
@@ -70,7 +63,7 @@ const Footer = () => {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-xs font-mono text-ink-400 uppercase tracking-widest mb-4">{category}</h3>
+              <h3 className="text-xs font-ui text-ink-400 uppercase tracking-[0.2em] mb-4">{category}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
@@ -105,7 +98,7 @@ const Footer = () => {
 
         {/* Attribution */}
         <div className="mt-6 pt-6 border-t border-ink-800 text-center">
-          <p className="text-ink-600 text-xs font-mono">
+          <p className="text-ink-600 text-xs font-ui">
             React + TypeScript + Tailwind CSS + Framer Motion · 部署于 Vercel
           </p>
         </div>

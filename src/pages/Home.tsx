@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Briefcase, Building2, Download, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import BrandMark from '../components/BrandMark'
 
 const specialties = [
   {
@@ -83,12 +84,16 @@ const Home = () => {
               variants={sectionReveal}
               className="max-w-4xl rounded-[2.5rem] border border-white/10 bg-black/30 px-6 py-8 backdrop-blur-md md:px-10 md:py-10"
             >
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm text-white/92 font-mono backdrop-blur-md shadow-[0_6px_20px_rgba(0,0,0,0.15)]">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm text-white/92 font-ui backdrop-blur-md shadow-[0_6px_20px_rgba(0,0,0,0.15)]">
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
                 XR / VR / AR 技术专家
               </div>
 
-              <h1 className="mt-8 font-display text-[3.1rem] font-semibold leading-[0.95] tracking-tight text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[5rem] xl:text-[6.2rem]">
+              <div className="mt-7">
+                <BrandMark tone="light" size="lg" subtitle="Technical Creative Portfolio" />
+              </div>
+
+              <h1 className="mt-8 font-display text-[3rem] font-semibold leading-[0.98] tracking-[0.015em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[4.5rem] xl:text-[5.4rem]">
                 胡亚崇
                 <br />
                 虚拟制作
@@ -105,7 +110,7 @@ const Home = () => {
                 {['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/20 bg-black/28 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
+                    className="rounded-full border border-white/20 bg-black/28 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_4px_16px_rgba(0,0,0,0.2)] font-ui"
                   >
                     {tag}
                   </span>
@@ -115,14 +120,14 @@ const Home = () => {
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   to="/about"
-                  className="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-ink-900 transition-colors hover:bg-surface-100"
+                  className="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-ink-900 transition-colors hover:bg-surface-100 font-ui"
                 >
                   查看履历
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-colors hover:bg-white/10 font-ui"
                 >
                   作品集
                 </Link>
@@ -142,7 +147,7 @@ const Home = () => {
             className="grid gap-12 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-4">
-              <span className="font-mono text-sm uppercase tracking-[0.28em] text-primary-300">Specialties</span>
+                <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">Specialties</span>
               <h2 className="mt-4 font-display text-4xl font-semibold md:text-5xl">
                 专业方向
               </h2>
@@ -191,7 +196,7 @@ const Home = () => {
               <div className="mt-8 space-y-4">
                 {metrics.map((metric) => (
                   <div key={metric.label} className="rounded-2xl border border-surface-200 bg-white px-5 py-4">
-                    <div className="font-mono text-xs uppercase tracking-widest text-primary-600">{metric.label}</div>
+                    <div className="font-ui text-xs uppercase tracking-[0.16em] text-primary-600">{metric.label}</div>
                     <div className="mt-2 text-lg font-semibold text-ink-900">{metric.value}</div>
                   </div>
                 ))}
@@ -205,12 +210,12 @@ const Home = () => {
                   className="grid gap-5 rounded-[2rem] border border-surface-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.05)] md:grid-cols-[120px_1fr]"
                 >
                   <div className="rounded-2xl bg-ink-900 px-4 py-5 text-center text-white">
-                    <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary-300">Year</div>
+                    <div className="font-ui text-xs uppercase tracking-[0.2em] text-primary-300">Year</div>
                     <div className="mt-3 font-display text-3xl">{project.year}</div>
                   </div>
                   <div className="flex flex-col justify-between gap-4">
                     <div>
-                      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface-100 px-3 py-1 text-xs font-mono uppercase tracking-widest text-ink-500">
+                      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface-100 px-3 py-1 text-xs font-ui uppercase tracking-[0.16em] text-ink-500">
                         <Building2 className="h-3.5 w-3.5" />
                         {project.client}
                       </div>
@@ -243,7 +248,7 @@ const Home = () => {
           >
             <div className="grid gap-10 xl:grid-cols-[1.4fr_0.9fr] xl:items-end">
               <div>
-                <span className="font-mono text-sm uppercase tracking-[0.28em] text-primary-300">Connect</span>
+                <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">Connect</span>
                 <h2 className="mt-4 font-display text-4xl font-semibold md:text-5xl xl:text-6xl">
                   为高规格项目
                   <br />
@@ -261,7 +266,7 @@ const Home = () => {
                   className="flex items-center justify-between rounded-[1.75rem] bg-white px-6 py-5 text-ink-900 transition-colors hover:bg-surface-100"
                 >
                   <div>
-                    <div className="font-mono text-xs uppercase tracking-widest text-primary-600">Contact</div>
+                    <div className="font-ui text-xs uppercase tracking-[0.16em] text-primary-600">Contact</div>
                     <div className="mt-1 text-xl font-semibold">合作接洽</div>
                   </div>
                   <ArrowRight className="h-5 w-5" />
@@ -274,7 +279,7 @@ const Home = () => {
                   className="flex items-center justify-between rounded-[1.75rem] border border-white/12 bg-white/6 px-6 py-5 text-white transition-colors hover:bg-white/10"
                 >
                   <div>
-                    <div className="font-mono text-xs uppercase tracking-widest text-primary-300">Resume</div>
+                    <div className="font-ui text-xs uppercase tracking-[0.16em] text-primary-300">Resume</div>
                     <div className="mt-1 text-xl font-semibold">下载 PDF 简历</div>
                   </div>
                   <Download className="h-5 w-5" />
@@ -285,7 +290,7 @@ const Home = () => {
                   className="flex items-center justify-between rounded-[1.75rem] border border-white/12 bg-transparent px-6 py-5 text-white transition-colors hover:bg-white/6"
                 >
                   <div>
-                    <div className="font-mono text-xs uppercase tracking-widest text-primary-300">Portfolio</div>
+                    <div className="font-ui text-xs uppercase tracking-[0.16em] text-primary-300">Portfolio</div>
                     <div className="mt-1 text-xl font-semibold">查看作品集</div>
                   </div>
                   <Briefcase className="h-5 w-5" />
