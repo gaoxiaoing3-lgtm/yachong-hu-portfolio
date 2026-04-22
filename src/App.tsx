@@ -9,16 +9,22 @@ import Portfolio from './pages/Portfolio'
 import About from './pages/About'
 import Contact from './pages/Contact'
 
+type ExperienceMode = 'professional' | 'studio'
+
 function AppShell() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const [theme, setTheme] = useState<'day' | 'night'>('day')
+  const [experienceMode, setExperienceMode] = useState<ExperienceMode>('professional')
 
   useEffect(() => {
     const saved = window.localStorage.getItem('site-theme')
     const initialTheme = saved === 'night' ? 'night' : 'day'
     setTheme(initialTheme)
     document.documentElement.dataset.theme = initialTheme
+
+    const savedMode = window.localStorage.getItem('site-experience-mode')
+    setExperienceMode(savedMode === 'studio' ? 'studio' : 'professional')
   }, [])
 
   const toggleTheme = () => {
@@ -28,9 +34,21 @@ function AppShell() {
     window.localStorage.setItem('site-theme', nextTheme)
   }
 
+  const toggleExperienceMode = () => {
+    const nextMode: ExperienceMode =
+      experienceMode === 'professional' ? 'studio' : 'professional'
+    setExperienceMode(nextMode)
+    window.localStorage.setItem('site-experience-mode', nextMode)
+  }
+
   return (
-    <div className="min-h-[100dvh] flex flex-col gradient-bg">
-      <Navbar theme={theme} onToggleTheme={toggleTheme} />
+    <div className={`min-h-[100dvh] flex flex-col gradient-bg ${experienceMode === 'studio' ? 'studio-shell' : ''}`}>
+      <Navbar
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        experienceMode={experienceMode}
+        onToggleExperienceMode={toggleExperienceMode}
+      />
       <AnimatePresence mode="wait">
         <motion.main
           initial={{ opacity: 0 }}
@@ -40,7 +58,7 @@ function AppShell() {
           className="flex-grow"
         >
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home experienceMode={experienceMode} />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />

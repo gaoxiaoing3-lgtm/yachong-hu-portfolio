@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Briefcase, Building2, Download, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -55,12 +55,36 @@ const metrics = [
   { label: '项目类型', value: '直播 / 演播室 / 包装' },
 ]
 
+const studioQuickLinks = [
+  { label: '作品集', to: '/portfolio' },
+  { label: '履历', to: '/about' },
+  { label: '联系', to: '/contact' },
+]
+
 const sectionReveal = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
 }
 
-const Home = () => {
+type HomeProps = {
+  experienceMode: 'professional' | 'studio'
+}
+
+const Home = ({ experienceMode }: HomeProps) => {
+  const isStudio = experienceMode === 'studio'
+  const [panelTilt, setPanelTilt] = useState({ rotateX: 0, rotateY: 0 })
+
+  const handlePanelMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!isStudio) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const relativeX = (event.clientX - rect.left) / rect.width - 0.5
+    const relativeY = (event.clientY - rect.top) / rect.height - 0.5
+    setPanelTilt({
+      rotateX: relativeY * -5.5,
+      rotateY: relativeX * 7,
+    })
+  }
+
   return (
     <div className="h-[calc(100dvh-4rem)] snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section className="relative min-h-[calc(100dvh-4rem)] snap-start overflow-hidden">
@@ -70,70 +94,171 @@ const Home = () => {
             alt="XR 虚拟演播室背景"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]" />
+          <div
+            className={`absolute inset-0 ${
+              isStudio
+                ? 'bg-[linear-gradient(96deg,rgba(4,8,16,0.98)_0%,rgba(4,8,16,0.88)_28%,rgba(4,8,16,0.52)_62%,rgba(4,8,16,0.24)_100%)]'
+                : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
+            }`}
+          />
+          <div
+            className={`absolute inset-0 ${
+              isStudio
+                ? 'bg-[linear-gradient(180deg,rgba(6,10,16,0.18)_0%,rgba(6,10,16,0.06)_20%,rgba(6,10,16,0.44)_100%)]'
+                : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
+            }`}
+          />
+          <div
+            className={`absolute inset-0 ${
+              isStudio
+                ? 'bg-[radial-gradient(circle_at_top_left,rgba(118,164,198,0.18),transparent_26%),radial-gradient(circle_at_right_center,rgba(168,201,226,0.10),transparent_22%)]'
+                : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
+            }`}
+          />
+          {isStudio ? (
+            <>
+              <div className="absolute -left-24 top-[14%] h-72 w-72 rounded-full bg-[#7f9ab0]/12 blur-3xl" />
+              <div className="absolute right-[-4rem] top-[28%] h-[28rem] w-[28rem] rounded-full bg-[#98b4ca]/10 blur-3xl" />
+              <div className="absolute bottom-[-8rem] left-[20%] h-72 w-96 rounded-full bg-white/6 blur-3xl" />
+              <div className="absolute inset-x-0 top-[14%] h-px bg-gradient-to-r from-transparent via-[#9ab7cf]/35 to-transparent" />
+              <div className="absolute inset-x-0 bottom-[18%] h-px bg-gradient-to-r from-transparent via-white/16 to-transparent" />
+              <div className="absolute inset-y-0 left-[10%] w-px bg-gradient-to-b from-transparent via-white/8 to-transparent" />
+              <div className="absolute inset-y-0 right-[14%] w-px bg-gradient-to-b from-transparent via-[#9ab7cf]/10 to-transparent" />
+            </>
+          ) : null}
         </div>
 
         <div className="relative z-10 flex min-h-[calc(100dvh-4rem)] items-center section-padding">
-          <div className="container-custom">
+          <div className={`container-custom ${isStudio ? 'flex justify-center md:justify-start' : ''}`}>
             <motion.div
               initial="hidden"
               animate="show"
               variants={sectionReveal}
-              className="max-w-4xl rounded-[2.5rem] border border-white/12 bg-[linear-gradient(180deg,rgba(4,8,14,0.72)_0%,rgba(7,11,18,0.62)_46%,rgba(8,12,19,0.68)_100%)] px-6 py-8 shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl md:px-10 md:py-10"
+              onMouseMove={handlePanelMove}
+              onMouseLeave={() => setPanelTilt({ rotateX: 0, rotateY: 0 })}
+              style={
+                isStudio
+                  ? {
+                      transform: `perspective(1600px) rotateX(${panelTilt.rotateX}deg) rotateY(${panelTilt.rotateY}deg)`,
+                      transformStyle: 'preserve-3d',
+                    }
+                  : undefined
+              }
+              className={`max-w-4xl rounded-[2.5rem] px-6 py-8 backdrop-blur-xl transition-transform duration-200 ease-out md:px-10 md:py-10 ${
+                isStudio
+                  ? 'relative mx-auto min-h-[42rem] w-full max-w-[34rem] overflow-hidden rounded-[2.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.05)_18%,rgba(10,16,25,0.38)_100%)] shadow-[0_40px_120px_rgba(0,0,0,0.38)]'
+                  : 'border border-white/12 bg-[linear-gradient(180deg,rgba(4,8,14,0.72)_0%,rgba(7,11,18,0.62)_46%,rgba(8,12,19,0.68)_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.28)]'
+              }`}
             >
+              {isStudio ? (
+                <>
+                  <div className="pointer-events-none absolute inset-0 rounded-[2.9rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.04)_26%,rgba(255,255,255,0.02)_48%,rgba(255,255,255,0.10)_100%)]" />
+                  <div className="pointer-events-none absolute inset-[1px] rounded-[2.8rem] border border-white/10" />
+                  <div className="pointer-events-none absolute left-5 top-0 h-28 w-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0.08)_42%,transparent_72%)] blur-2xl" />
+                  <div className="pointer-events-none absolute right-0 top-[20%] h-56 w-32 bg-[radial-gradient(circle_at_center,rgba(147,175,196,0.28)_0%,rgba(147,175,196,0.04)_58%,transparent_78%)] blur-2xl" />
+                </>
+              ) : null}
               <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-black/26 px-4 py-2 text-sm text-white font-ui backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.24)] [text-shadow:0_2px_12px_rgba(0,0,0,0.45)]">
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
-                XR / VR / AR 技术专家
+                {isStudio ? 'STUDIO MODE / FUTURE BROADCAST ENVIRONMENT' : 'XR / VR / AR 技术专家'}
               </div>
 
               <div className="mt-7 inline-flex max-w-full px-1 py-1">
                 <img
                   src="/logo-wordmark.svg"
                   alt="HUYACHONG"
-                  className="logo-adaptive h-auto w-[min(30rem,70vw)]"
+                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(20rem,66vw)] opacity-82' : 'w-[min(30rem,70vw)]'}`}
                 />
               </div>
 
-              <h1 className="mt-8 font-display text-[3rem] font-semibold leading-[0.98] tracking-[0.015em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[4.5rem] xl:text-[5.4rem]">
-                胡亚崇
-                <br />
-                虚拟制作
-                <br />
-                技术负责人
-              </h1>
+              {isStudio ? (
+                <>
+                  <div className="mt-10">
+                    <div className="font-display text-[4.4rem] font-semibold leading-[0.92] tracking-[0.01em] text-white drop-shadow-[0_14px_40px_rgba(0,0,0,0.42)] md:text-[5.4rem]">
+                      虚拟空间
+                      <br />
+                      构建
+                    </div>
+                    <div className="mt-5 max-w-sm font-ui text-[0.9rem] uppercase tracking-[0.24em] text-white/72">
+                      胡亚崇 · XR / 广电 / 实时视觉
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <h1 className="mt-8 font-display text-[3rem] font-semibold leading-[0.98] tracking-[0.015em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[4.5rem] xl:text-[5.4rem]">
+                  胡亚崇
+                  <br />
+                  虚拟制作
+                  <br />
+                  技术负责人
+                </h1>
+              )}
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white md:text-xl [text-shadow:0_2px_14px_rgba(0,0,0,0.48)]">
-                长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，
-                聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
+              <p className={`mt-8 ${isStudio ? 'max-w-sm text-base text-white/76' : 'max-w-2xl text-lg text-white md:text-xl'} leading-relaxed [text-shadow:0_2px_14px_rgba(0,0,0,0.48)]`}>
+                {isStudio
+                  ? '面向演播室、直播、品牌发布与实时内容环境，构建兼具空间秩序、视觉系统与技术落地的数字场域。'
+                  : '长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。'}
               </p>
 
+              {isStudio ? (
+                <div className="mt-8 grid gap-3">
+                  {[
+                    ['Field', 'Future studio environment'],
+                    ['Surface', 'Liquid glass interaction'],
+                    ['Motion', 'Mouse-reactive screen tilt'],
+                  ].map(([label, text]) => (
+                    <div
+                      key={label}
+                      className="rounded-[1.25rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.04)_100%)] px-4 py-3 backdrop-blur-sm"
+                    >
+                      <div className="font-ui text-[0.66rem] uppercase tracking-[0.18em] text-[#b7cad8]">
+                        {label}
+                      </div>
+                      <div className="mt-2 text-sm text-white/84">{text}</div>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+
               <div className="mt-8 flex flex-wrap gap-3">
-                {['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/28 bg-black/34 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_6px_18px_rgba(0,0,0,0.24)] font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {isStudio
+                  ? studioQuickLinks.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={item.to}
+                        className="rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_100%)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.07)_100%)] font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
+                      >
+                        {item.label}
+                      </Link>
+                    ))
+                  : ['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/28 bg-black/34 px-4 py-2 text-sm font-medium text-white shadow-[0_6px_18px_rgba(0,0,0,0.24)] backdrop-blur-sm font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
               </div>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/about"
-                  className="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-ink-900 transition-colors hover:bg-surface-100 font-ui"
-                >
-                  查看履历
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-                <Link
-                  to="/portfolio"
-                  className="inline-flex items-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-colors hover:bg-white/10 font-ui"
-                >
-                  作品集
-                </Link>
+                {isStudio ? null : (
+                  <>
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-ink-900 transition-colors hover:bg-surface-100 font-ui"
+                    >
+                      查看履历
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                    <Link
+                      to="/portfolio"
+                      className="inline-flex items-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-colors hover:bg-white/10 font-ui"
+                    >
+                      作品集
+                    </Link>
+                  </>
+                )}
               </div>
             </motion.div>
           </div>
@@ -150,30 +275,65 @@ const Home = () => {
             className="grid gap-12 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-4">
-                <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">Specialties</span>
+              <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">
+                {isStudio ? 'Studio Window' : 'Specialties'}
+              </span>
               <h2 className="mt-4 font-display text-4xl font-semibold md:text-5xl">
-                专业方向
+                {isStudio ? '第二屏窗口预留' : '专业方向'}
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/68">
-                从广电级演播室到品牌直播现场，长期聚焦虚拟技术的方案、实施与交付。
+                {isStudio
+                  ? '这里先预留未来演播室的第二屏内容窗口。后续可接连续场景、镜头推进、环境音控制和实时信息层。'
+                  : '从广电级演播室到品牌直播现场，长期聚焦虚拟技术的方案、实施与交付。'}
               </p>
             </div>
 
             <div className="lg:col-span-8 grid gap-5 md:grid-cols-2">
-              {specialties.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
-                >
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
-                      <Sparkles className="h-5 w-5 text-primary-300" />
+              {isStudio ? (
+                <div className="md:col-span-2 rounded-[2rem] border border-[#9ab7cf]/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.03)_100%)] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+                  <div className="flex flex-wrap items-start justify-between gap-6">
+                    <div className="max-w-xl">
+                      <div className="font-ui text-xs uppercase tracking-[0.2em] text-primary-300">
+                        Reserved Scene Panel
+                      </div>
+                      <h3 className="mt-3 font-display text-3xl text-white">Studio Mode / Screen Two</h3>
+                      <p className="mt-4 text-base leading-relaxed text-white/72">
+                        这里预留给连续空间的第二阶段。后续可接入场景推进、控制台数据层、
+                        局部视频面板、声音开关和轻量粒子系统。
+                      </p>
                     </div>
-                    <h3 className="font-display text-2xl">{item.title}</h3>
+                    <div className="grid min-w-[16rem] gap-3">
+                      {[
+                        'Window A / ambient layer',
+                        'Window B / control panel',
+                        'Window C / scene transition',
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-[1.1rem] border border-white/10 bg-black/18 px-4 py-3 font-ui text-xs uppercase tracking-[0.16em] text-white/78"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="leading-relaxed text-white/68">{item.text}</p>
                 </div>
-              ))}
+              ) : (
+                specialties.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
+                  >
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
+                        <Sparkles className="h-5 w-5 text-primary-300" />
+                      </div>
+                      <h3 className="font-display text-2xl">{item.title}</h3>
+                    </div>
+                    <p className="leading-relaxed text-white/68">{item.text}</p>
+                  </div>
+                ))
+              )}
             </div>
           </motion.div>
         </div>
