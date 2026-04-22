@@ -82,9 +82,9 @@ const Home = () => {
               initial="hidden"
               animate="show"
               variants={sectionReveal}
-              className="max-w-4xl rounded-[2.5rem] border border-white/10 bg-black/30 px-6 py-8 backdrop-blur-md md:px-10 md:py-10"
+              className="max-w-4xl rounded-[2.5rem] border border-white/12 bg-[linear-gradient(180deg,rgba(4,8,14,0.72)_0%,rgba(7,11,18,0.62)_46%,rgba(8,12,19,0.68)_100%)] px-6 py-8 shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl md:px-10 md:py-10"
             >
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm text-white/92 font-ui backdrop-blur-md shadow-[0_6px_20px_rgba(0,0,0,0.15)]">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-black/26 px-4 py-2 text-sm text-white font-ui backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.24)] [text-shadow:0_2px_12px_rgba(0,0,0,0.45)]">
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
                 XR / VR / AR 技术专家
               </div>
@@ -101,7 +101,7 @@ const Home = () => {
                 技术负责人
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/92 md:text-xl [text-shadow:0_2px_14px_rgba(0,0,0,0.45)]">
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white md:text-xl [text-shadow:0_2px_14px_rgba(0,0,0,0.48)]">
                 长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，
                 聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
               </p>
@@ -110,7 +110,7 @@ const Home = () => {
                 {['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/20 bg-black/28 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_4px_16px_rgba(0,0,0,0.2)] font-ui"
+                    className="rounded-full border border-white/28 bg-black/34 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_6px_18px_rgba(0,0,0,0.24)] font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
                   >
                     {tag}
                   </span>

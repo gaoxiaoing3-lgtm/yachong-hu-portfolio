@@ -38,7 +38,7 @@ const BrandMark = ({
       : {
           mark: 'text-white',
           accent: 'bg-primary-300',
-          subtitle: 'text-white/72',
+          subtitle: 'text-white/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.42)]',
         }
 
   const alignClass = align === 'center' ? 'items-center text-center' : 'items-start text-left'
