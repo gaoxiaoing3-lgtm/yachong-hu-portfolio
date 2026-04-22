@@ -90,7 +90,7 @@ const Home = () => {
 
               <div className="mt-7 inline-flex max-w-full px-1 py-1">
                 <img
-                  src="/logo-wordmark-adaptive.png"
+                  src="/logo-wordmark.svg"
                   alt="HUYACHONG"
                   className="logo-adaptive h-auto w-[min(30rem,70vw)]"
                 />

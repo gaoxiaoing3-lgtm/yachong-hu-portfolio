@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="inline-flex px-1 py-1">
               <img
-                src="/logo-wordmark-adaptive.png"
+                src="/logo-wordmark.svg"
                 alt="HUYACHONG"
                 className="logo-adaptive h-8 w-auto sm:h-10"
               />

@@ -33,7 +33,7 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
           <Link to="/" className="group">
             <div className="px-1 py-1 transition-transform duration-200 group-hover:-translate-y-0.5">
               <img
-                src="/logo-wordmark-adaptive.png"
+                src="/logo-wordmark.svg"
                 alt="HUYACHONG"
                 className="logo-adaptive h-7 w-auto sm:h-8"
               />
