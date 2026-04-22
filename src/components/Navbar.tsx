@@ -44,7 +44,7 @@ const Navbar = ({
         <div
           className={`flex items-center justify-between ${
             isStudioHome
-              ? 'mx-auto mt-5 h-auto max-w-6xl rounded-[1.75rem] border border-white/14 bg-[linear-gradient(180deg,rgba(17,24,33,0.64)_0%,rgba(12,18,28,0.52)_100%)] px-5 py-4 shadow-[0_24px_60px_rgba(0,0,0,0.24)] backdrop-blur-2xl'
+              ? 'studio-glass-nav studio-glow-line mx-auto mt-5 h-auto max-w-6xl rounded-[1.75rem] px-5 py-4'
               : 'h-16'
           }`}
         >
@@ -92,19 +92,29 @@ const Navbar = ({
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={onToggleExperienceMode}
-              className="theme-toggle inline-flex items-center rounded-full p-1.5"
+              className={`inline-flex items-center rounded-full p-1.5 ${
+                isStudioHome ? 'studio-glass-chip' : 'theme-toggle'
+              }`}
               aria-label="切换专业模式和演播室模式"
             >
               <span
                 className={`theme-toggle__option inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium font-ui transition-all ${
-                  experienceMode === 'professional' ? 'theme-toggle__option--active' : ''
+                  experienceMode === 'professional'
+                    ? 'theme-toggle__option--active'
+                    : isStudioHome
+                      ? 'text-white/62'
+                      : ''
                 }`}
               >
                 Professional
               </span>
               <span
                 className={`theme-toggle__option inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium font-ui transition-all ${
-                  experienceMode === 'studio' ? 'theme-toggle__option--active' : ''
+                  experienceMode === 'studio'
+                    ? 'theme-toggle__option--active'
+                    : isStudioHome
+                      ? 'text-white/62'
+                      : ''
                 }`}
               >
                 Studio

@@ -89,41 +89,45 @@ const Home = ({ experienceMode }: HomeProps) => {
     <div className="h-[calc(100dvh-4rem)] snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section className="relative min-h-[calc(100dvh-4rem)] snap-start overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/home-hero-stage.png"
-            alt="XR 虚拟演播室背景"
-            className="h-full w-full object-cover"
-          />
+          {isStudio ? null : (
+            <img
+              src="/home-hero-stage.png"
+              alt="XR 虚拟演播室背景"
+              className="h-full w-full object-cover"
+            />
+          )}
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[linear-gradient(96deg,rgba(4,8,16,0.98)_0%,rgba(4,8,16,0.88)_28%,rgba(4,8,16,0.52)_62%,rgba(4,8,16,0.24)_100%)]'
+                ? 'bg-[linear-gradient(120deg,rgba(4,7,12,0.98)_0%,rgba(4,7,12,0.94)_22%,rgba(4,7,12,0.82)_50%,rgba(4,7,12,0.76)_100%)]'
                 : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[linear-gradient(180deg,rgba(6,10,16,0.18)_0%,rgba(6,10,16,0.06)_20%,rgba(6,10,16,0.44)_100%)]'
+                ? 'bg-[radial-gradient(circle_at_14%_18%,rgba(128,160,190,0.18),transparent_18%),radial-gradient(circle_at_80%_24%,rgba(228,240,248,0.08),transparent_16%),radial-gradient(circle_at_50%_78%,rgba(88,108,140,0.18),transparent_24%)]'
                 : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[radial-gradient(circle_at_top_left,rgba(118,164,198,0.18),transparent_26%),radial-gradient(circle_at_right_center,rgba(168,201,226,0.10),transparent_22%)]'
+                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_24%,rgba(255,255,255,0.02)_52%,transparent_100%)]'
                 : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
             }`}
           />
           {isStudio ? (
             <>
-              <div className="absolute -left-24 top-[14%] h-72 w-72 rounded-full bg-[#7f9ab0]/12 blur-3xl" />
-              <div className="absolute right-[-4rem] top-[28%] h-[28rem] w-[28rem] rounded-full bg-[#98b4ca]/10 blur-3xl" />
-              <div className="absolute bottom-[-8rem] left-[20%] h-72 w-96 rounded-full bg-white/6 blur-3xl" />
-              <div className="absolute inset-x-0 top-[14%] h-px bg-gradient-to-r from-transparent via-[#9ab7cf]/35 to-transparent" />
-              <div className="absolute inset-x-0 bottom-[18%] h-px bg-gradient-to-r from-transparent via-white/16 to-transparent" />
-              <div className="absolute inset-y-0 left-[10%] w-px bg-gradient-to-b from-transparent via-white/8 to-transparent" />
-              <div className="absolute inset-y-0 right-[14%] w-px bg-gradient-to-b from-transparent via-[#9ab7cf]/10 to-transparent" />
+              <div className="absolute -left-12 top-[10%] h-80 w-80 rounded-full bg-[#8aa8bf]/12 blur-3xl" />
+              <div className="absolute right-[-5rem] top-[18%] h-[32rem] w-[32rem] rounded-full bg-[#9dbcd4]/12 blur-3xl" />
+              <div className="absolute bottom-[-7rem] left-[24%] h-80 w-[30rem] rounded-full bg-white/6 blur-3xl" />
+              <div className="absolute left-[8%] top-[8%] h-[38rem] w-px bg-gradient-to-b from-transparent via-white/12 to-transparent" />
+              <div className="absolute right-[18%] top-[12%] h-[26rem] w-px bg-gradient-to-b from-transparent via-[#bfd5e6]/10 to-transparent" />
+              <div className="absolute left-[16%] top-[22%] h-px w-[44%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="absolute right-[6%] top-[42%] h-px w-[28%] bg-gradient-to-r from-transparent via-[#afc8dd]/18 to-transparent" />
+              <div className="absolute bottom-[18%] left-[12%] h-px w-[54%] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_24%,rgba(255,255,255,0.05)_0%,transparent_24%),radial-gradient(circle_at_68%_56%,rgba(255,255,255,0.04)_0%,transparent_16%)]" />
             </>
           ) : null}
         </div>
@@ -146,19 +150,24 @@ const Home = ({ experienceMode }: HomeProps) => {
               }
               className={`max-w-4xl rounded-[2.5rem] px-6 py-8 backdrop-blur-xl transition-transform duration-200 ease-out md:px-10 md:py-10 ${
                 isStudio
-                  ? 'relative mx-auto min-h-[42rem] w-full max-w-[34rem] overflow-hidden rounded-[2.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.05)_18%,rgba(10,16,25,0.38)_100%)] shadow-[0_40px_120px_rgba(0,0,0,0.38)]'
+                  ? 'studio-glass-panel studio-glow-line relative mx-auto min-h-[42rem] w-full max-w-[34rem] overflow-hidden rounded-[2.9rem]'
                   : 'border border-white/12 bg-[linear-gradient(180deg,rgba(4,8,14,0.72)_0%,rgba(7,11,18,0.62)_46%,rgba(8,12,19,0.68)_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.28)]'
               }`}
             >
               {isStudio ? (
                 <>
-                  <div className="pointer-events-none absolute inset-0 rounded-[2.9rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.04)_26%,rgba(255,255,255,0.02)_48%,rgba(255,255,255,0.10)_100%)]" />
-                  <div className="pointer-events-none absolute inset-[1px] rounded-[2.8rem] border border-white/10" />
-                  <div className="pointer-events-none absolute left-5 top-0 h-28 w-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.38)_0%,rgba(255,255,255,0.08)_42%,transparent_72%)] blur-2xl" />
-                  <div className="pointer-events-none absolute right-0 top-[20%] h-56 w-32 bg-[radial-gradient(circle_at_center,rgba(147,175,196,0.28)_0%,rgba(147,175,196,0.04)_58%,transparent_78%)] blur-2xl" />
+                  <div className="pointer-events-none absolute -left-[10%] top-[8%] h-48 w-[60%] rounded-full bg-white/10 blur-3xl" />
+                  <div className="pointer-events-none absolute -right-[10%] top-[22%] h-56 w-[48%] rounded-full bg-[#b0cde1]/12 blur-3xl" />
+                  <div className="pointer-events-none absolute bottom-[10%] left-[18%] h-24 w-[58%] rounded-full bg-white/6 blur-2xl" />
+                  <div className="pointer-events-none absolute left-[10%] top-[17%] h-px w-[72%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <div className="pointer-events-none absolute right-[8%] top-[12%] h-20 w-20 rounded-full border border-white/10 bg-white/4 blur-[1px]" />
                 </>
               ) : null}
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-black/26 px-4 py-2 text-sm text-white font-ui backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.24)] [text-shadow:0_2px_12px_rgba(0,0,0,0.45)]">
+              <div className={`inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm text-white font-ui backdrop-blur-md [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] ${
+                isStudio
+                  ? 'studio-glass-chip'
+                  : 'border border-white/30 bg-black/26 shadow-[0_8px_24px_rgba(0,0,0,0.24)]'
+              }`}>
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
                 {isStudio ? 'STUDIO MODE / FUTURE BROADCAST ENVIRONMENT' : 'XR / VR / AR 技术专家'}
               </div>
@@ -209,7 +218,7 @@ const Home = ({ experienceMode }: HomeProps) => {
                   ].map(([label, text]) => (
                     <div
                       key={label}
-                      className="rounded-[1.25rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.04)_100%)] px-4 py-3 backdrop-blur-sm"
+                      className="studio-glass-chip rounded-[1.25rem] px-4 py-3"
                     >
                       <div className="font-ui text-[0.66rem] uppercase tracking-[0.18em] text-[#b7cad8]">
                         {label}
@@ -226,7 +235,7 @@ const Home = ({ experienceMode }: HomeProps) => {
                       <Link
                         key={item.label}
                         to={item.to}
-                        className="rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.05)_100%)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.07)_100%)] font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
+                        className="studio-glass-chip rounded-full px-5 py-2.5 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
                       >
                         {item.label}
                       </Link>
