@@ -44,23 +44,23 @@ const itemRight = {
 const services = [
   {
     label: '01',
-    title: '虚拟演播室制作',
-    description: 'AI驱动的实时虚拟场景生成与渲染管线，支持多机位虚拟运镜与直播推流。',
+    title: 'XR / 虚拟演播室',
+    description: '面向广电、活动直播与发布会场景，提供 XR、虚拟演播室与 LED 虚拟制作整体技术方案。',
   },
   {
     label: '02',
-    title: '舞美效果图设计',
-    description: '将舞美概念转化为高精度3D预演动画，提供沉浸式可视化评审体验。',
+    title: '广电包装与实时图形',
+    description: '覆盖 AR 实时包装、节目视觉效果、演播室联调及系统实施，兼顾创意与工程落地。',
   },
   {
     label: '03',
-    title: '虚拟项目落地',
-    description: '从技术验证到生产交付，端到端解决虚拟制作场景落地难题。',
+    title: '项目落地与技术统筹',
+    description: '从前期测试、设备调试到现场执行与培训支持，推动虚拟技术方案稳定交付。',
   },
   {
     label: '04',
-    title: 'AIGC工具开发',
-    description: '基于扩散模型与多模态架构，构建定制化AI辅助创作工作流。',
+    title: 'AI 数字内容协同',
+    description: '结合虚拟制作流程，参与 AI 数字内容策划、生成与视频项目协同，扩展新型内容生产能力。',
   },
 ]
 
@@ -94,40 +94,56 @@ const Home = () => {
       {/* Hero Section */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-end">
+          <div className="grid lg:grid-cols-12 gap-10 xl:gap-14 items-center">
 
-            {/* Left column: text — offset vertically */}
             <motion.div
               variants={itemLeft}
               initial="hidden"
               animate="show"
-              className="lg:col-span-7 lg:pt-24 space-y-8"
+              className="lg:col-span-5 space-y-8"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink-200 text-sm text-ink-600 font-mono">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-ink-200 bg-white text-sm text-ink-600 font-mono shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-primary-500" />
-                AIGC 动画师 & 虚拟制作
+                XR / VR / AR 技术专家
               </div>
 
-              <h1 className="font-display text-5xl md:text-7xl font-semibold text-ink-900 leading-[1.05] tracking-tight text-balance">
+              <h1 className="font-display text-5xl md:text-7xl font-semibold text-ink-900 leading-[0.98] tracking-tight text-balance">
                 胡亚崇
                 <br />
-                <span className="text-primary-600">构建虚拟</span>
+                <span className="text-primary-600">虚拟制作</span>
                 <br />
-                视觉叙事
+                技术负责人
               </h1>
 
-              <p className="text-lg text-ink-500 max-w-lg leading-relaxed">
-                专注虚拟演播室、舞美预演与AIGC工具开发。
-                作品集涵盖沉浸式舞台设计、实时渲染引擎与多模态AI创作系统。
+              <p className="text-lg text-ink-500 max-w-xl leading-relaxed">
+                长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，
+                聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
               </p>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap gap-3">
+                {['XR / VR / AR', '虚拟演播室', '广电与直播技术'].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-4 py-2 rounded-full bg-surface-100 text-ink-700 text-sm font-medium border border-surface-200"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
                 <Link
-                  to="/portfolio"
+                  to="/about"
                   className="inline-flex items-center px-8 py-4 bg-ink-900 text-white rounded-full hover:bg-ink-700 transition-colors font-medium text-base"
                 >
-                  作品集
+                  查看履历
                   <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link
+                  to="/portfolio"
+                  className="inline-flex items-center px-8 py-4 border border-ink-300 text-ink-700 rounded-full hover:bg-ink-50 transition-colors font-medium text-base"
+                >
+                  作品集
                 </Link>
                 <a
                   href="mailto:contact@example.com"
@@ -138,20 +154,42 @@ const Home = () => {
               </div>
             </motion.div>
 
-            {/* Right column: visual block — asymmetric */}
             <motion.div
               variants={itemRight}
               initial="hidden"
               animate="show"
               transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 relative"
+              className="lg:col-span-7 relative"
             >
-              {/* Offset layered composition */}
-              <div className="relative aspect-[4/5] w-full max-w-sm ml-auto">
-                <div className="absolute inset-0 rounded-4xl bg-ink-900 translate-x-6 translate-y-6" />
-                <div className="relative w-full h-full rounded-4xl bg-surface-200 overflow-hidden flex items-center justify-center">
-                  <Sparkles className="w-20 h-20 text-ink-400" />
-                  <span className="absolute bottom-4 left-4 text-sm text-ink-500 font-mono">个人形象区</span>
+              <div className="relative ml-auto max-w-4xl">
+                <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-[2.5rem] bg-ink-900/90" />
+                <div className="relative overflow-hidden rounded-[2.5rem] border border-ink-200 bg-ink-900 shadow-[0_30px_80px_rgba(15,23,42,0.16)]">
+                  <img
+                    src="/home-hero-stage.png"
+                    alt="虚拟演播室与LED虚拟制作主视觉"
+                    className="h-[460px] w-full object-cover md:h-[560px]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/12 to-transparent" />
+                  <div className="absolute left-6 right-6 bottom-6 flex flex-col gap-4 md:left-8 md:right-8 md:bottom-8 md:flex-row md:items-end md:justify-between">
+                    <div className="max-w-xl">
+                      <div className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 mb-3">
+                        Premium Virtual Production
+                      </div>
+                      <div className="font-display text-2xl md:text-3xl text-white leading-tight">
+                        广电级 XR 场景落地与高规格虚拟制作实施
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 md:min-w-[260px]">
+                      <div className="rounded-2xl bg-white/10 backdrop-blur-sm px-4 py-3">
+                        <div className="font-mono text-[11px] uppercase tracking-widest text-white/60">Since</div>
+                        <div className="text-white text-lg font-semibold mt-1">2012</div>
+                      </div>
+                      <div className="rounded-2xl bg-white/10 backdrop-blur-sm px-4 py-3">
+                        <div className="font-mono text-[11px] uppercase tracking-widest text-white/60">Focus</div>
+                        <div className="text-white text-lg font-semibold mt-1">XR / Broadcast</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
