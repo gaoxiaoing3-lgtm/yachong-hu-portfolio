@@ -70,8 +70,9 @@ const Home = () => {
             alt="XR 虚拟演播室背景"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,12,18,0.88)_0%,rgba(7,12,18,0.68)_38%,rgba(7,12,18,0.2)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.22),transparent_32%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]" />
         </div>
 
         <div className="relative z-10 flex min-h-[calc(100dvh-4rem)] items-center section-padding">
@@ -80,14 +81,14 @@ const Home = () => {
               initial="hidden"
               animate="show"
               variants={sectionReveal}
-              className="max-w-4xl"
+              className="max-w-4xl rounded-[2.5rem] border border-white/10 bg-black/30 px-6 py-8 backdrop-blur-md md:px-10 md:py-10"
             >
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/80 font-mono backdrop-blur-md">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/12 px-4 py-2 text-sm text-white/92 font-mono backdrop-blur-md shadow-[0_6px_20px_rgba(0,0,0,0.15)]">
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
                 XR / VR / AR 技术专家
               </div>
 
-              <h1 className="mt-8 font-display text-5xl font-semibold leading-[0.92] tracking-tight text-white md:text-7xl xl:text-8xl">
+              <h1 className="mt-8 font-display text-[3.1rem] font-semibold leading-[0.95] tracking-tight text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[5rem] xl:text-[6.2rem]">
                 胡亚崇
                 <br />
                 虚拟制作
@@ -95,7 +96,7 @@ const Home = () => {
                 技术负责人
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/72 md:text-xl">
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/92 md:text-xl [text-shadow:0_2px_14px_rgba(0,0,0,0.45)]">
                 长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，
                 聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
               </p>
@@ -104,7 +105,7 @@ const Home = () => {
                 {['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-medium text-white/86 backdrop-blur-sm"
+                    className="rounded-full border border-white/20 bg-black/28 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
                   >
                     {tag}
                   </span>

@@ -1,4 +1,5 @@
 import type React from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -11,10 +12,25 @@ import Contact from './pages/Contact'
 function AppShell() {
   const location = useLocation()
   const isHome = location.pathname === '/'
+  const [theme, setTheme] = useState<'day' | 'night'>('day')
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem('site-theme')
+    const initialTheme = saved === 'night' ? 'night' : 'day'
+    setTheme(initialTheme)
+    document.documentElement.dataset.theme = initialTheme
+  }, [])
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'day' ? 'night' : 'day'
+    setTheme(nextTheme)
+    document.documentElement.dataset.theme = nextTheme
+    window.localStorage.setItem('site-theme', nextTheme)
+  }
 
   return (
     <div className="min-h-[100dvh] flex flex-col gradient-bg">
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <AnimatePresence mode="wait">
         <motion.main
           initial={{ opacity: 0 }}

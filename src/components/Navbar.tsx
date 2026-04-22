@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles } from 'lucide-react'
+import { Menu, X, Sparkles, Sun, Moon } from 'lucide-react'
 
-const Navbar = () => {
+type NavbarProps = {
+  theme: 'day' | 'night'
+  onToggleTheme: () => void
+}
+
+const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -19,7 +24,7 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200"
+      className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-surface-200 theme-navbar"
     >
       <div className="container-custom section-padding !py-0">
         <div className="flex items-center justify-between h-16">
@@ -58,22 +63,40 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA — desktop */}
-          <a
-            href="mailto:contact@example.com"
-            className="hidden md:inline-flex items-center px-5 py-2 bg-ink-900 text-white text-sm rounded-full hover:bg-ink-700 transition-colors font-medium"
-          >
-            合作接洽
-          </a>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={onToggleTheme}
+              className="inline-flex items-center gap-2 rounded-full border border-surface-200 bg-white/70 px-4 py-2 text-sm text-ink-700 transition-colors hover:bg-surface-100"
+              aria-label="切换白天夜间模式"
+            >
+              {theme === 'day' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+              <span>{theme === 'day' ? '夜间' : '白天'}</span>
+            </button>
+            <a
+              href="mailto:contact@example.com"
+              className="hidden md:inline-flex items-center px-5 py-2 bg-ink-900 text-white text-sm rounded-full hover:bg-ink-700 transition-colors font-medium"
+            >
+              合作接洽
+            </a>
+          </div>
 
           {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors"
-            aria-label="菜单"
-          >
-            {isOpen ? <X className="w-5 h-5 text-ink-700" /> : <Menu className="w-5 h-5 text-ink-700" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={onToggleTheme}
+              className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
+              aria-label="切换白天夜间模式"
+            >
+              {theme === 'day' ? <Moon className="w-4 h-4 text-ink-700" /> : <Sun className="w-4 h-4 text-ink-700" />}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg hover:bg-surface-100 transition-colors"
+              aria-label="菜单"
+            >
+              {isOpen ? <X className="w-5 h-5 text-ink-700" /> : <Menu className="w-5 h-5 text-ink-700" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -107,6 +130,12 @@ const Navbar = () => {
                 >
                   合作接洽
                 </a>
+                <button
+                  onClick={onToggleTheme}
+                  className="block w-full px-4 py-3 border border-surface-200 rounded-xl text-sm text-ink-700 text-center font-medium"
+                >
+                  切换到{theme === 'day' ? '夜间' : '白天'}模式
+                </button>
               </div>
             </motion.div>
           )}

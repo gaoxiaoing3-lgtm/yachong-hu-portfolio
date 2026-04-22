@@ -24,6 +24,7 @@
     @apply bg-white text-ink-900 font-body antialiased;
     font-optical-sizing: auto;
     letter-spacing: 0.01em;
+    transition: background-color 220ms ease, color 220ms ease;
   }
 }
 
@@ -67,6 +68,10 @@
   .eyebrow {
     @apply font-mono text-sm uppercase tracking-[0.28em];
   }
+
+  .theme-navbar {
+    transition: background-color 220ms ease, border-color 220ms ease;
+  }
 }
 
 @layer utilities {
@@ -99,4 +104,85 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-ink-400;
   }
+}
+
+html[data-theme='night'] body {
+  background: #0b0d10;
+  color: #f2eee6;
+}
+
+html[data-theme='night'] .gradient-bg {
+  background: linear-gradient(180deg, #0b0d10 0%, #13161b 100%);
+}
+
+html[data-theme='night'] .page-shell {
+  background: linear-gradient(180deg, #111317 0%, #171b20 100%);
+}
+
+html[data-theme='night'] .lux-card {
+  background: #171b20;
+  border-color: #2e3137;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+html[data-theme='night'] .lux-card-dark {
+  background: #0d1014;
+  border-color: #2a2f35;
+}
+
+html[data-theme='night'] .theme-navbar {
+  background: rgba(14, 17, 21, 0.9);
+  border-color: #2c3138;
+}
+
+html[data-theme='night'] .bg-white,
+html[data-theme='night'] .bg-\[\#fcfaf6\],
+html[data-theme='night'] .bg-\[\#faf7f1\] {
+  background-color: #171b20 !important;
+}
+
+html[data-theme='night'] .bg-surface-50,
+html[data-theme='night'] .bg-surface-100 {
+  background-color: #1b2026 !important;
+}
+
+html[data-theme='night'] .bg-surface-200 {
+  background-color: #252a31 !important;
+}
+
+html[data-theme='night'] .border-surface-200,
+html[data-theme='night'] .border-\[\#d9d2c5\],
+html[data-theme='night'] .border-\[\#ddd6c8\],
+html[data-theme='night'] .border-\[\#dfd8ca\],
+html[data-theme='night'] .border-\[\#e4ddcf\] {
+  border-color: #31363d !important;
+}
+
+html[data-theme='night'] .text-ink-900,
+html[data-theme='night'] .text-ink-800 {
+  color: #f3eee5 !important;
+}
+
+html[data-theme='night'] .text-ink-700,
+html[data-theme='night'] .text-ink-600,
+html[data-theme='night'] .text-ink-500,
+html[data-theme='night'] .text-ink-400 {
+  color: #d2cabd !important;
+}
+
+html[data-theme='night'] .text-primary-700,
+html[data-theme='night'] .text-primary-600 {
+  color: #d8c07a !important;
+}
+
+html[data-theme='night'] .bg-ink-900 {
+  background-color: #0d1014 !important;
+}
+
+html[data-theme='night'] .hover\:bg-surface-100:hover {
+  background-color: #242931 !important;
+}
+
+html[data-theme='night'] .hover\:bg-surface-50:hover {
+  background-color: #1e232a !important;
 }
