@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
-import BrandMark from './BrandMark'
 
 type NavbarProps = {
   theme: 'day' | 'night'
@@ -32,7 +31,13 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
 
           {/* Logo */}
           <Link to="/" className="group">
-            <BrandMark size="sm" subtitle="XR Production" />
+            <div className="rounded-[1.15rem] border border-white/50 bg-white/96 px-4 py-3 shadow-[0_10px_28px_rgba(15,23,42,0.08)] transition-transform duration-200 group-hover:-translate-y-0.5">
+              <img
+                src="/logo-wordmark.png"
+                alt="HUYACHONG"
+                className="h-7 w-auto sm:h-8"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

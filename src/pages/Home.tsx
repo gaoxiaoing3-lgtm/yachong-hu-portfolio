@@ -2,7 +2,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Briefcase, Building2, Download, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import BrandMark from '../components/BrandMark'
 
 const specialties = [
   {
@@ -89,8 +88,12 @@ const Home = () => {
                 XR / VR / AR 技术专家
               </div>
 
-              <div className="mt-7">
-                <BrandMark tone="light" size="lg" subtitle="Technical Creative Portfolio" />
+              <div className="mt-7 inline-flex max-w-full rounded-[1.6rem] border border-white/14 bg-white/94 px-5 py-4 shadow-[0_18px_42px_rgba(0,0,0,0.22)]">
+                <img
+                  src="/logo-wordmark.png"
+                  alt="HUYACHONG"
+                  className="h-auto w-[min(30rem,70vw)]"
+                />
               </div>
 
               <h1 className="mt-8 font-display text-[3rem] font-semibold leading-[0.98] tracking-[0.015em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[4.5rem] xl:text-[5.4rem]">

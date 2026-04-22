@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import BrandMark from './BrandMark'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -40,7 +39,13 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
-            <BrandMark tone="light" size="md" subtitle="XR Production & Virtual Craft" />
+            <div className="inline-flex rounded-[1.4rem] border border-white/10 bg-white/95 px-4 py-4 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
+              <img
+                src="/logo-wordmark.png"
+                alt="HUYACHONG"
+                className="h-8 w-auto sm:h-10"
+              />
+            </div>
             <p className="text-ink-400 text-sm leading-relaxed max-w-xs">
               专注虚拟演播室制作、舞美效果图设计、虚拟项目落地与AIGC工具开发。将前沿技术与艺术创意结合，打造卓越视觉体验。
             </p>
