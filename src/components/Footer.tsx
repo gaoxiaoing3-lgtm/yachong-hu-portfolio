@@ -39,11 +39,11 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="inline-flex rounded-[1.4rem] border border-white/10 bg-white/95 px-4 py-4 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
+            <div className="inline-flex px-1 py-1">
               <img
-                src="/logo-wordmark.png"
+                src="/logo-wordmark-adaptive.png"
                 alt="HUYACHONG"
-                className="h-8 w-auto sm:h-10"
+                className="logo-adaptive h-8 w-auto sm:h-10"
               />
             </div>
             <p className="text-ink-400 text-sm leading-relaxed max-w-xs">

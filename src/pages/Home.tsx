@@ -88,11 +88,11 @@ const Home = () => {
                 XR / VR / AR 技术专家
               </div>
 
-              <div className="mt-7 inline-flex max-w-full rounded-[1.6rem] border border-white/14 bg-white/94 px-5 py-4 shadow-[0_18px_42px_rgba(0,0,0,0.22)]">
+              <div className="mt-7 inline-flex max-w-full px-1 py-1">
                 <img
-                  src="/logo-wordmark.png"
+                  src="/logo-wordmark-adaptive.png"
                   alt="HUYACHONG"
-                  className="h-auto w-[min(30rem,70vw)]"
+                  className="logo-adaptive h-auto w-[min(30rem,70vw)]"
                 />
               </div>
 

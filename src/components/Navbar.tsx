@@ -31,11 +31,11 @@ const Navbar = ({ theme, onToggleTheme }: NavbarProps) => {
 
           {/* Logo */}
           <Link to="/" className="group">
-            <div className="rounded-[1.15rem] border border-white/50 bg-white/96 px-4 py-3 shadow-[0_10px_28px_rgba(15,23,42,0.08)] transition-transform duration-200 group-hover:-translate-y-0.5">
+            <div className="px-1 py-1 transition-transform duration-200 group-hover:-translate-y-0.5">
               <img
-                src="/logo-wordmark.png"
+                src="/logo-wordmark-adaptive.png"
                 alt="HUYACHONG"
-                className="h-7 w-auto sm:h-8"
+                className="logo-adaptive h-7 w-auto sm:h-8"
               />
             </div>
           </Link>

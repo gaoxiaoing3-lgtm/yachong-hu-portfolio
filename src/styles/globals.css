@@ -123,6 +123,12 @@
     color: #f9fafb;
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.16);
   }
+
+  .logo-adaptive {
+    display: block;
+    mix-blend-mode: difference;
+    filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.08));
+  }
 }
 
 @layer utilities {
