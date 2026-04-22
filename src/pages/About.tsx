@@ -1,69 +1,85 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowDownToLine, ArrowRight, Briefcase, Building2, Sparkles } from 'lucide-react'
 
-const skills = [
-  { name: 'Unreal Engine 5', level: 92 },
-  { name: 'Unity / C#', level: 85 },
-  { name: 'Blender / 3D建模', level: 88 },
-  { name: 'AI 推理与部署', level: 80 },
-  { name: 'TouchDesigner', level: 78 },
-  { name: '实时渲染管线', level: 90 },
+const focusAreas = [
+  'XR / VR / AR 技术方案设计与落地实施',
+  '虚拟演播室、LED 虚拟制作及广电包装技术支持',
+  'AR 实时包装、节目视觉效果制作与系统联调',
+  '虚拟系统项目管理、硬件调试、培训及技术服务',
+  '品牌直播、论坛会务、赛事转播等场景的虚拟技术应用',
+  'AI 数字内容策划、生成与视频制作协同',
 ]
 
-const timeline = [
+const experienceGroups = [
   {
-    year: '2022 — 至今',
-    role: 'AIGC动画师 & 虚拟制作',
-    org: '自由职业 / 项目合作',
-    desc: '承接虚拟演播室、舞美预演与AI工具开发项目，服务演出、影视与品牌客户。',
+    title: '广电媒体与新闻节目虚拟制作',
+    entries: [
+      'CCTV-2 财经频道：参与频道改版包装、《财智奥运》《两会大数据》《数说财经》等项目的 AR / VR 设计与制作。',
+      '湖北卫视：参与频道改版、大屏设计与 VR 演播室改造，完成《长江新闻号》《南水北调特别节目》《防务听涛》等项目的 AR / VR 制作。',
+      '广东广播电视台：负责 AR / VR 设计制作、设备调试及安装，涵盖《全球零距离》、广东体育频道、南方卫视《讲开又讲》及新闻栏目虚拟效果服务。',
+      '中国气象系统：参与《天气体育》、“全运会”“温网”特别节目及《一周出行参考》演播室相关设计制作与系统支持。',
+      '人民解放军影视中心、广东省公安厅、哈尔滨电视台、黑龙江电视台、浙江电视台钱江频道、佛山电视台三水频道、佛山气象局：持续参与节目虚拟设计、包装与演播室相关制作。',
+      '香港 TVB、香港凤凰卫视：负责 AR / VR 系统项目管理。',
+    ],
   },
   {
-    year: '2020 — 2022',
-    role: '虚拟制作工程师',
-    org: '某制作公司',
-    desc: '负责虚拟舞台设计与UE实时渲染管线，支持大型直播活动与线上虚拟发布会。',
-  },
-  {
-    year: '2018 — 2020',
-    role: '3D动画师',
-    org: '某动画工作室',
-    desc: '参与多部商业动画与舞台视觉项目的3D建模、绑定与动画制作。',
-  },
-  {
-    year: '2015 — 2018',
-    role: '视觉设计',
-    org: '某传媒公司',
-    desc: '负责舞台视觉素材设计与制作，接触舞美预演与现场视觉工程。',
+    title: '展会、内容包装与创意视觉',
+    entries: [
+      'Filmarket 展会：参与 AR 系统展示及 Zero Density 虚拟演播室 Demo 展示。',
+      '新华社：参与 MG 动画《全国平均身高》及《席菁观察》相关内容制作。',
+      '品牌与创意项目：参与奔驰车展提案、互动投影项目研发、川艺傲加人才孵化基地视觉设计，以及乐视欧洲杯虚拟植入提案（AR）。',
+    ],
   },
 ]
 
-const education = [
+const recentHighlights = [
   {
-    degree: '数字媒体艺术 学士',
-    school: '某艺术院校',
-    year: '2015',
+    year: '2021',
+    title: '品牌直播与企业大会',
+    detail: '担任“小王子与美赞臣”直播项目 VR / XR 技术效果负责人；担任广汽丰田 2020 年度《改善大会》VR / XR 技术效果负责人。',
   },
   {
-    degree: '虚拟制作专项培训',
-    school: '某技术中心',
-    year: '2020',
+    year: '2022',
+    title: '企业大会与虚拟人直播',
+    detail: '担任广汽丰田《经销商大会》、广汽丰田 2022 年度《改善大会》VR / XR 技术效果负责人，以及德宝虚拟人直播项目 VR / XR 技术效果负责人。',
+  },
+  {
+    year: '2023',
+    title: '持续服务广汽丰田',
+    detail: '担任《改善大会》VR / XR 技术效果负责人。',
+  },
+  {
+    year: '2024',
+    title: '大型体育转播',
+    detail: '担任广东体育频道《欧洲杯》转播项目 VR / XR 技术效果负责人。',
+  },
+  {
+    year: '2025',
+    title: '技术指导、培训与咨询',
+    detail: '为北京凤凰卫视、香港中文大学、香港岭南大学、香港政府总部、启德体育城及广州 XR 演播室提供技术指导、培训、咨询与维护服务。',
+  },
+  {
+    year: '2026',
+    title: 'AI 数字内容项目',
+    detail: '负责民信药业 / 广州中医药大学附属医院 AI 数字吉祥物视频项目策划、AI 内容制作与生成。',
   },
 ]
 
-const certifications = [
-  'Unreal Engine 官方认证',
-  'TouchDesigner 开发者认证',
-  'NVIDIA AI 推理优化认证',
-  'Blender 专家级认证',
-]
-
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+const capabilityCards = [
+  {
+    label: '技术能力',
+    text: '具备 XR / VR / AR 技术方案设计、虚拟演播室搭建、LED 虚拟制作、实时包装、系统联调、设备调试与现场实施能力。',
   },
-}
+  {
+    label: '项目经验',
+    text: '具备广电媒体、政府合作项目、高校培训、企业活动、赛事转播及品牌直播等多场景实战经验。',
+  },
+  {
+    label: '组织协调',
+    text: '能够承担项目技术负责人、实施负责人或技术顾问角色，统筹方案沟通、执行落地、培训支持与协同配合。',
+  },
+]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -74,157 +90,205 @@ const About = () => {
   return (
     <div className="section-padding">
       <div className="container-custom">
-
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-20"
+          className="mb-16"
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">About</span>
+          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Resume</span>
           <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-900 mt-3 leading-tight">
-            关于我
+            工作履历
           </h1>
+          <p className="text-ink-500 mt-6 max-w-3xl leading-relaxed text-lg">
+            胡亚崇，XR / VR / AR 技术专家、虚拟制作技术负责人。2012 年至今长期深耕广电节目、
+            品牌活动、赛事转播、虚拟演播室及 XR 直播项目，具备从方案设计、视觉包装到系统联调、
+            现场实施与项目统筹的完整落地经验。
+          </p>
         </motion.div>
 
-        {/* Intro + Skills — 2-column */}
-        <div className="grid lg:grid-cols-12 gap-12 mb-20">
-
-          {/* Left: intro text */}
+        <div className="grid lg:grid-cols-12 gap-10 mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -32 }}
+            initial={{ opacity: 0, x: -28 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 space-y-6"
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
           >
-            <p className="font-display text-2xl md:text-3xl text-ink-800 leading-snug">
-              胡亚崇，AIGC动画师，
-              <br />
-              专注<strong className="text-primary-600">虚拟视觉叙事</strong>与实时渲染。
-            </p>
-            <p className="text-ink-500 leading-relaxed">
-              早年从事3D动画与视觉设计，2019年起转向虚拟制作与AI辅助创作。
-              擅长大场景实时渲染、LED虚拟影棚与AIGC工作流搭建。
-            </p>
-            <p className="text-ink-500 leading-relaxed">
-              合作客户涵盖演出演艺、影视制作、品牌活动与教育机构。
-              追求将前沿技术与艺术表达融合，为每项目找到独特视觉语言。
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="mailto:contact@example.com"
-                className="inline-flex items-center px-6 py-3 bg-ink-900 text-white rounded-full hover:bg-ink-700 transition-colors font-medium text-sm"
-              >
-                合作接洽
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center px-6 py-3 border border-ink-300 text-ink-700 rounded-full hover:bg-ink-50 transition-colors font-medium text-sm"
-              >
-                下载简历
-              </a>
+            <div className="rounded-[2rem] bg-ink-900 text-white p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-primary-300" />
+                </div>
+                <div>
+                  <div className="text-sm font-mono text-primary-300 uppercase tracking-widest">Profile</div>
+                  <div className="font-display text-2xl">职业概述</div>
+                </div>
+              </div>
+              <p className="text-white/80 leading-relaxed mb-5">
+                服务对象覆盖央视、省级卫视、气象系统、公安系统、高校及企业客户，可独立推动虚拟技术方案从创意阶段走向稳定交付。
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="rounded-2xl bg-white/5 p-5">
+                  <div className="text-xs font-mono text-primary-300 uppercase tracking-widest mb-2">岗位定位</div>
+                  <div className="text-base leading-relaxed">XR / VR / AR 技术专家、虚拟制作技术负责人</div>
+                </div>
+                <div className="rounded-2xl bg-white/5 p-5">
+                  <div className="text-xs font-mono text-primary-300 uppercase tracking-widest mb-2">从业时间</div>
+                  <div className="text-base leading-relaxed">2012 年至今，10 余年虚拟制作与广电技术实施经验</div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right: skills */}
           <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="lg:col-span-5 space-y-5"
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-4"
           >
-            {skills.map((skill) => (
-              <motion.div key={skill.name} variants={fadeUp}>
-                <div className="flex justify-between items-baseline mb-2">
-                  <span className="text-sm font-medium text-ink-700">{skill.name}</span>
-                  <span className="text-xs font-mono text-ink-400">{skill.level}%</span>
-                </div>
-                <div className="h-1 bg-surface-200 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-ink-900 rounded-full origin-left"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: skill.level / 100 }}
-                    transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                    style={{ transformOrigin: 'left center' }}
-                  />
-                </div>
-              </motion.div>
-            ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between rounded-[1.75rem] border border-surface-200 bg-white p-6 hover:bg-surface-50 transition-colors"
+            >
+              <div>
+                <div className="text-sm font-mono text-primary-600 uppercase tracking-widest mb-1">Download</div>
+                <div className="font-display text-2xl text-ink-900">下载正式简历 PDF</div>
+              </div>
+              <ArrowDownToLine className="w-6 h-6 text-ink-700" />
+            </a>
+
+            <div className="rounded-[1.75rem] border border-surface-200 bg-surface-50 p-6">
+              <div className="text-sm font-mono text-primary-600 uppercase tracking-widest mb-3">Focus</div>
+              <div className="space-y-3">
+                {focusAreas.slice(0, 4).map((item) => (
+                  <div key={item} className="flex gap-3 text-sm text-ink-700 leading-relaxed">
+                    <span className="mt-1 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
+        <motion.section
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+          className="mb-20"
+        >
+          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Specialties</span>
+          <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">专业方向</h2>
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {focusAreas.map((item) => (
+              <motion.div
+                key={item}
+                variants={fadeUp}
+                className="rounded-2xl border border-surface-200 bg-white p-5 text-ink-700 leading-relaxed"
+              >
+                {item}
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-20"
         >
           <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Experience</span>
-          <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-10">
-            职业经历
-          </h2>
-          <div className="relative">
-            {/* Vertical line */}
+          <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">主要工作履历</h2>
+          <div className="space-y-8">
+            {experienceGroups.map((group) => (
+              <div key={group.title} className="rounded-[2rem] border border-surface-200 bg-white p-7 md:p-9">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-2xl bg-surface-100 flex items-center justify-center">
+                    <Building2 className="w-5 h-5 text-ink-800" />
+                  </div>
+                  <h3 className="font-display text-2xl text-ink-900">{group.title}</h3>
+                </div>
+                <div className="space-y-4">
+                  {group.entries.map((entry) => (
+                    <div key={entry} className="flex gap-3 text-ink-600 leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
+                      <p>{entry}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-20"
+        >
+          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Highlights</span>
+          <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">近年重点项目</h2>
+          <div className="relative pl-6">
             <div className="absolute left-0 top-2 bottom-2 w-px bg-surface-300" />
-            <div className="space-y-10 pl-8">
-              {timeline.map((entry) => (
-                <div key={entry.year} className="relative">
-                  <div className="absolute -left-8 top-2 w-3 h-3 rounded-full bg-ink-900 border-2 border-surface-50" />
-                  <div className="font-mono text-xs text-primary-600 mb-1">{entry.year}</div>
-                  <div className="font-display text-lg font-semibold text-ink-900">{entry.role}</div>
-                  <div className="text-ink-400 text-sm mb-1">{entry.org}</div>
-                  <p className="text-ink-500 text-sm leading-relaxed">{entry.desc}</p>
+            <div className="space-y-7">
+              {recentHighlights.map((entry) => (
+                <div key={entry.year} className="relative rounded-[1.5rem] bg-surface-50 p-6 md:p-7">
+                  <div className="absolute -left-[1.95rem] top-8 w-3.5 h-3.5 rounded-full bg-ink-900 border-4 border-white" />
+                  <div className="font-mono text-xs text-primary-600 mb-2">{entry.year}</div>
+                  <div className="font-display text-2xl text-ink-900 mb-2">{entry.title}</div>
+                  <p className="text-ink-600 leading-relaxed">{entry.detail}</p>
                 </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Education + Certifications — 2-column */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Education */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Education</span>
-            <h2 className="font-display text-2xl font-semibold text-ink-900 mt-3 mb-6">学历背景</h2>
-            <div className="space-y-6">
-              {education.map((edu) => (
-                <div key={edu.degree} className="border-l-2 border-surface-300 pl-5">
-                  <div className="font-medium text-ink-800">{edu.degree}</div>
-                  <div className="text-ink-400 text-sm">{edu.school} · {edu.year}</div>
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Capabilities</span>
+          <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">综合能力</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {capabilityCards.map((card) => (
+              <div key={card.label} className="rounded-[1.75rem] bg-ink-900 text-white p-7">
+                <div className="flex items-center gap-3 mb-4">
+                  <Briefcase className="w-5 h-5 text-primary-300" />
+                  <div className="font-display text-2xl">{card.label}</div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
+                <p className="text-white/75 leading-relaxed">{card.text}</p>
+              </div>
+            ))}
+          </div>
 
-          {/* Certifications */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Certifications</span>
-            <h2 className="font-display text-2xl font-semibold text-ink-900 mt-3 mb-6">专业认证</h2>
-            <ul className="space-y-3">
-              {certifications.map((cert) => (
-                <li key={cert} className="flex items-center gap-3 text-ink-600 text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
-                  {cert}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-7 py-4 bg-ink-900 text-white rounded-full hover:bg-ink-700 transition-colors font-medium"
+            >
+              下载 PDF 简历
+              <ArrowDownToLine className="w-4 h-4 ml-2" />
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center px-7 py-4 border border-ink-300 text-ink-700 rounded-full hover:bg-ink-50 transition-colors font-medium"
+            >
+              合作联系
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </a>
+          </div>
+        </motion.section>
       </div>
     </div>
   )
