@@ -88,7 +88,7 @@ const fadeUp = {
 
 const About = () => {
   return (
-    <div className="section-padding">
+    <div className="section-padding page-shell">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -96,11 +96,11 @@ const About = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-16"
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Resume</span>
-          <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-900 mt-3 leading-tight">
+          <span className="eyebrow text-primary-700">Resume</span>
+          <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink-900 mt-4 leading-tight">
             工作履历
           </h1>
-          <p className="text-ink-500 mt-6 max-w-3xl leading-relaxed text-lg">
+          <p className="text-ink-700 mt-6 max-w-3xl leading-relaxed text-lg md:text-xl">
             胡亚崇，XR / VR / AR 技术专家、虚拟制作技术负责人。2012 年至今长期深耕广电节目、
             品牌活动、赛事转播、虚拟演播室及 XR 直播项目，具备从方案设计、视觉包装到系统联调、
             现场实施与项目统筹的完整落地经验。
@@ -114,27 +114,27 @@ const About = () => {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <div className="rounded-[2rem] bg-ink-900 text-white p-8 md:p-10">
+            <div className="lux-card-dark text-white p-8 md:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-primary-300" />
                 </div>
                 <div>
-                  <div className="text-sm font-mono text-primary-300 uppercase tracking-widest">Profile</div>
+                  <div className="eyebrow text-primary-300">Profile</div>
                   <div className="font-display text-2xl">职业概述</div>
                 </div>
               </div>
-              <p className="text-white/80 leading-relaxed mb-5">
+              <p className="text-white/84 leading-relaxed mb-5 text-[1.02rem]">
                 服务对象覆盖央视、省级卫视、气象系统、公安系统、高校及企业客户，可独立推动虚拟技术方案从创意阶段走向稳定交付。
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl bg-white/5 p-5">
-                  <div className="text-xs font-mono text-primary-300 uppercase tracking-widest mb-2">岗位定位</div>
-                  <div className="text-base leading-relaxed">XR / VR / AR 技术专家、虚拟制作技术负责人</div>
+                  <div className="font-mono text-xs text-primary-300 uppercase tracking-widest mb-2">岗位定位</div>
+                  <div className="text-base leading-relaxed text-white">XR / VR / AR 技术专家、虚拟制作技术负责人</div>
                 </div>
                 <div className="rounded-2xl bg-white/5 p-5">
-                  <div className="text-xs font-mono text-primary-300 uppercase tracking-widest mb-2">从业时间</div>
-                  <div className="text-base leading-relaxed">2012 年至今，10 余年虚拟制作与广电技术实施经验</div>
+                  <div className="font-mono text-xs text-primary-300 uppercase tracking-widest mb-2">从业时间</div>
+                  <div className="text-base leading-relaxed text-white">2012 年至今，10 余年虚拟制作与广电技术实施经验</div>
                 </div>
               </div>
             </div>
@@ -150,20 +150,20 @@ const About = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-[1.75rem] border border-surface-200 bg-white p-6 hover:bg-surface-50 transition-colors"
+              className="flex items-center justify-between lux-card p-6 hover:bg-[#fcfaf5] transition-colors"
             >
               <div>
-                <div className="text-sm font-mono text-primary-600 uppercase tracking-widest mb-1">Download</div>
+                <div className="eyebrow text-primary-700 mb-1">Download</div>
                 <div className="font-display text-2xl text-ink-900">下载正式简历 PDF</div>
               </div>
               <ArrowDownToLine className="w-6 h-6 text-ink-700" />
             </a>
 
-            <div className="rounded-[1.75rem] border border-surface-200 bg-surface-50 p-6">
-              <div className="text-sm font-mono text-primary-600 uppercase tracking-widest mb-3">Focus</div>
+            <div className="lux-card p-6 bg-[#faf7f1]">
+              <div className="eyebrow text-primary-700 mb-3">Focus</div>
               <div className="space-y-3">
                 {focusAreas.slice(0, 4).map((item) => (
-                  <div key={item} className="flex gap-3 text-sm text-ink-700 leading-relaxed">
+                  <div key={item} className="flex gap-3 text-sm text-ink-800 leading-relaxed">
                     <span className="mt-1 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
                     <span>{item}</span>
                   </div>
@@ -180,14 +180,14 @@ const About = () => {
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
           className="mb-20"
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Specialties</span>
+          <span className="eyebrow text-primary-700">Specialties</span>
           <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">专业方向</h2>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             {focusAreas.map((item) => (
               <motion.div
                 key={item}
                 variants={fadeUp}
-                className="rounded-2xl border border-surface-200 bg-white p-5 text-ink-700 leading-relaxed"
+                className="lux-card p-5 text-ink-800 leading-relaxed"
               >
                 {item}
               </motion.div>
@@ -202,11 +202,11 @@ const About = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-20"
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Experience</span>
+          <span className="eyebrow text-primary-700">Experience</span>
           <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">主要工作履历</h2>
           <div className="space-y-8">
             {experienceGroups.map((group) => (
-              <div key={group.title} className="rounded-[2rem] border border-surface-200 bg-white p-7 md:p-9">
+              <div key={group.title} className="lux-card p-7 md:p-9">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-2xl bg-surface-100 flex items-center justify-center">
                     <Building2 className="w-5 h-5 text-ink-800" />
@@ -214,8 +214,8 @@ const About = () => {
                   <h3 className="font-display text-2xl text-ink-900">{group.title}</h3>
                 </div>
                 <div className="space-y-4">
-                  {group.entries.map((entry) => (
-                    <div key={entry} className="flex gap-3 text-ink-600 leading-relaxed">
+                  {group.entries.map((entry, index) => (
+                    <div key={`${group.title}-${index}`} className="flex gap-3 text-ink-800 leading-relaxed">
                       <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0" />
                       <p>{entry}</p>
                     </div>
@@ -233,17 +233,17 @@ const About = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-20"
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Highlights</span>
+          <span className="eyebrow text-primary-700">Highlights</span>
           <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">近年重点项目</h2>
           <div className="relative pl-6">
             <div className="absolute left-0 top-2 bottom-2 w-px bg-surface-300" />
             <div className="space-y-7">
               {recentHighlights.map((entry) => (
-                <div key={entry.year} className="relative rounded-[1.5rem] bg-surface-50 p-6 md:p-7">
+                <div key={entry.year} className="relative rounded-[1.6rem] bg-white border border-[#dfd8ca] p-6 md:p-7 shadow-[0_14px_40px_rgba(15,23,42,0.04)]">
                   <div className="absolute -left-[1.95rem] top-8 w-3.5 h-3.5 rounded-full bg-ink-900 border-4 border-white" />
-                  <div className="font-mono text-xs text-primary-600 mb-2">{entry.year}</div>
+                  <div className="font-mono text-xs text-primary-700 mb-2">{entry.year}</div>
                   <div className="font-display text-2xl text-ink-900 mb-2">{entry.title}</div>
-                  <p className="text-ink-600 leading-relaxed">{entry.detail}</p>
+                  <p className="text-ink-800 leading-relaxed">{entry.detail}</p>
                 </div>
               ))}
             </div>
@@ -256,16 +256,16 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Capabilities</span>
+          <span className="eyebrow text-primary-700">Capabilities</span>
           <h2 className="font-display text-3xl font-semibold text-ink-900 mt-3 mb-8">综合能力</h2>
           <div className="grid md:grid-cols-3 gap-5">
             {capabilityCards.map((card) => (
-              <div key={card.label} className="rounded-[1.75rem] bg-ink-900 text-white p-7">
+              <div key={card.label} className="lux-card-dark text-white p-7">
                 <div className="flex items-center gap-3 mb-4">
                   <Briefcase className="w-5 h-5 text-primary-300" />
                   <div className="font-display text-2xl">{card.label}</div>
                 </div>
-                <p className="text-white/75 leading-relaxed">{card.text}</p>
+                <p className="text-white/82 leading-relaxed">{card.text}</p>
               </div>
             ))}
           </div>

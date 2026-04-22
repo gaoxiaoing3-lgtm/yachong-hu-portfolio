@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Clash+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -23,6 +23,7 @@
   body {
     @apply bg-white text-ink-900 font-body antialiased;
     font-optical-sizing: auto;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -50,15 +51,31 @@
   .card-surface {
     @apply bg-surface-50 border border-surface-200;
   }
+
+  .page-shell {
+    @apply bg-[linear-gradient(180deg,#fcfbf8_0%,#f4f1eb_100%)];
+  }
+
+  .lux-card {
+    @apply rounded-[2rem] border border-[#ddd6c8] bg-white shadow-[0_18px_48px_rgba(15,23,42,0.06)];
+  }
+
+  .lux-card-dark {
+    @apply rounded-[2rem] border border-white/10 bg-ink-900 shadow-[0_24px_56px_rgba(15,23,42,0.18)];
+  }
+
+  .eyebrow {
+    @apply font-mono text-sm uppercase tracking-[0.28em];
+  }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
   }
 
   .font-body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Noto Serif SC', serif;
   }
 
   .font-mono {

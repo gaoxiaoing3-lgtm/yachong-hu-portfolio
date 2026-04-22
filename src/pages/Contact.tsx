@@ -32,10 +32,7 @@ const Contact = () => {
     }
     setErrors({})
     setIsSubmitting(true)
-
-    // 模拟提交
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
+    await new Promise((resolve) => setTimeout(resolve, 1500))
     setIsSubmitting(false)
     setIsSubmitted(true)
 
@@ -67,8 +64,8 @@ const Contact = () => {
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      label: '地址',
-      value: '北京市朝阳区',
+      label: '服务地区',
+      value: '广州 / 香港 / 北京 / 异地协作',
       href: '#',
     },
   ]
@@ -78,22 +75,18 @@ const Contact = () => {
       icon: <Github className="w-5 h-5" />,
       name: 'GitHub',
       url: 'https://github.com',
-      username: '@yachonghu',
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       name: 'LinkedIn',
       url: 'https://linkedin.com',
-      username: '胡亚崇',
     },
   ]
 
   return (
-    <div className="section-padding">
+    <div className="section-padding page-shell">
       <div className="container-custom">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-
-          {/* Left: header + info */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             animate={{ opacity: 1, x: 0 }}
@@ -101,30 +94,28 @@ const Contact = () => {
             className="lg:col-span-4 space-y-10"
           >
             <div>
-              <span className="font-mono text-sm text-primary-600 tracking-widest uppercase">Contact</span>
-              <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 mt-3 leading-tight">
+              <span className="eyebrow text-primary-700">Contact</span>
+              <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-900 mt-4 leading-tight">
                 合作接洽
               </h1>
-              <p className="text-ink-500 mt-4 leading-relaxed">
-                有虚拟制作、舞美预演或AIGC工具开发需求，欢迎联系。
-                可提供初步技术评估与报价参考。
+              <p className="text-ink-700 mt-5 leading-relaxed text-lg">
+                如需广电虚拟制作、XR 技术实施、LED 虚拟场景、培训咨询或 AI 数字内容协同支持，欢迎直接联系。
               </p>
             </div>
 
-            {/* Contact info */}
             <div className="space-y-4">
               {contactInfo.map((info) => (
                 <a
                   key={info.label}
                   href={info.href}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-surface-100 hover:bg-surface-200 transition-colors group"
+                  className="lux-card flex items-center gap-4 p-5 hover:bg-[#fcfaf5] transition-colors group"
                 >
-                  <div className="p-2 bg-ink-900 text-white rounded-lg shrink-0">
+                  <div className="p-2.5 bg-ink-900 text-white rounded-xl shrink-0">
                     {info.icon}
                   </div>
                   <div>
-                    <div className="text-xs font-mono text-ink-400 mb-0.5">{info.label}</div>
-                    <div className="text-sm font-medium text-ink-700 group-hover:text-primary-600 transition-colors">
+                    <div className="text-xs font-mono text-ink-500 mb-1">{info.label}</div>
+                    <div className="text-sm text-ink-900 group-hover:text-primary-700 transition-colors">
                       {info.value}
                     </div>
                   </div>
@@ -132,17 +123,30 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social */}
-            <div>
-              <div className="text-sm font-mono text-ink-400 mb-3 uppercase tracking-widest">社交</div>
-              <div className="flex gap-3">
+            <div className="lux-card-dark p-6 text-white">
+              <div className="eyebrow text-primary-300 mb-4">Response</div>
+              <div className="space-y-3">
+                <div className="flex justify-between text-sm">
+                  <span className="text-white/68">工作日</span>
+                  <span className="text-white">24 小时内</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-white/68">周末</span>
+                  <span className="text-white">48 小时内</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-white/68">高优先级项目</span>
+                  <span className="text-primary-300">可协商加急</span>
+                </div>
+              </div>
+              <div className="mt-6 flex gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-surface-100 rounded-xl hover:bg-ink-900 hover:text-white transition-all group"
+                    className="rounded-xl bg-white/8 p-3 hover:bg-white/14 transition-colors"
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -150,28 +154,8 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-
-            {/* Response time */}
-            <div className="p-5 rounded-xl bg-ink-900 text-white">
-              <div className="text-xs font-mono text-primary-400 uppercase tracking-widest mb-3">响应时间</div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-ink-400">工作日</span>
-                  <span className="text-white font-medium">24小时内</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-ink-400">周末</span>
-                  <span className="text-white font-medium">48小时内</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-ink-400">紧急项目</span>
-                  <span className="text-primary-400 font-medium">可协商</span>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
-          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
@@ -183,24 +167,25 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-surface-100 rounded-2xl p-12 text-center"
+                className="lux-card p-12 text-center"
               >
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-500/10 flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-primary-600" />
+                  <CheckCircle className="w-8 h-8 text-primary-700" />
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-ink-900 mb-3">
-                  消息已发送
-                </h3>
-                <p className="text-ink-500">
-                  感谢来信，我会尽快回复。
-                </p>
+                <h3 className="font-display text-3xl text-ink-900 mb-3">消息已发送</h3>
+                <p className="text-ink-700">感谢来信，我会尽快回复。</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-surface-100 rounded-2xl p-8 lg:p-10 space-y-6">
+              <form onSubmit={handleSubmit} className="lux-card p-8 lg:p-10 space-y-6 bg-[#fcfaf6]">
+                <div className="mb-2">
+                  <div className="eyebrow text-primary-700">Inquiry Form</div>
+                  <h2 className="font-display text-3xl text-ink-900 mt-3">项目咨询表单</h2>
+                </div>
+
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-ink-700 mb-2">
-                      姓名 <span className="text-primary-500">*</span>
+                    <label htmlFor="name" className="block text-sm text-ink-900 mb-2">
+                      姓名 <span className="text-primary-700">*</span>
                     </label>
                     <input
                       type="text"
@@ -209,15 +194,15 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="您的姓名"
-                      className={`w-full px-4 py-3 bg-white border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
-                        errors.name ? 'border-red-400' : 'border-surface-200'
+                      className={`w-full px-4 py-3 bg-white border rounded-xl text-ink-900 placeholder:text-ink-500 transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
+                        errors.name ? 'border-red-400' : 'border-[#d9d2c5]'
                       }`}
                     />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                    {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-ink-700 mb-2">
-                      邮箱 <span className="text-primary-500">*</span>
+                    <label htmlFor="email" className="block text-sm text-ink-900 mb-2">
+                      邮箱 <span className="text-primary-700">*</span>
                     </label>
                     <input
                       type="email"
@@ -226,17 +211,17 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className={`w-full px-4 py-3 bg-white border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
-                        errors.email ? 'border-red-400' : 'border-surface-200'
+                      className={`w-full px-4 py-3 bg-white border rounded-xl text-ink-900 placeholder:text-ink-500 transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
+                        errors.email ? 'border-red-400' : 'border-[#d9d2c5]'
                       }`}
                     />
-                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                    {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-ink-700 mb-2">
-                    主题 <span className="text-primary-500">*</span>
+                  <label htmlFor="subject" className="block text-sm text-ink-900 mb-2">
+                    主题 <span className="text-primary-700">*</span>
                   </label>
                   <input
                     type="text"
@@ -244,48 +229,39 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder="项目合作 / 技术咨询 / 其他"
-                    className={`w-full px-4 py-3 bg-white border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
-                      errors.subject ? 'border-red-400' : 'border-surface-200'
+                    placeholder="广电项目 / XR 技术咨询 / 品牌活动 / 其他"
+                    className={`w-full px-4 py-3 bg-white border rounded-xl text-ink-900 placeholder:text-ink-500 transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 ${
+                      errors.subject ? 'border-red-400' : 'border-[#d9d2c5]'
                     }`}
                   />
-                  {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject}</p>}
+                  {errors.subject && <p className="mt-1 text-xs text-red-600">{errors.subject}</p>}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-ink-700 mb-2">
-                    消息内容 <span className="text-primary-500">*</span>
+                  <label htmlFor="message" className="block text-sm text-ink-900 mb-2">
+                    消息内容 <span className="text-primary-700">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={6}
-                    placeholder="请描述您的项目需求或问题..."
-                    className={`w-full px-4 py-3 bg-white border rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 resize-none ${
-                      errors.message ? 'border-red-400' : 'border-surface-200'
+                    rows={7}
+                    placeholder="请简要说明项目背景、合作时间、需求方向或希望沟通的内容。"
+                    className={`w-full px-4 py-3 bg-white border rounded-xl text-ink-900 placeholder:text-ink-500 transition-colors focus:outline-none focus:ring-2 focus:ring-ink-900 resize-none ${
+                      errors.message ? 'border-red-400' : 'border-[#d9d2c5]'
                     }`}
                   />
-                  {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
+                  {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-ink-900 text-white rounded-xl hover:bg-ink-700 transition-colors font-medium flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-ink-900 text-white rounded-full hover:bg-ink-800 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3" />
-                      发送中...
-                    </>
-                  ) : (
-                    <>
-                      发送消息
-                      <Send className="w-4 h-4 ml-2" />
-                    </>
-                  )}
+                  {isSubmitting ? '发送中...' : '发送咨询'}
+                  {!isSubmitting && <Send className="w-4 h-4 ml-2" />}
                 </button>
               </form>
             )}
