@@ -87,6 +87,7 @@ type HomeProps = {
 
 const Home = ({ experienceMode }: HomeProps) => {
   const isStudio = experienceMode === 'studio'
+  const useHorizonBanner = true
   const [panelTilt, setPanelTilt] = useState({ rotateX: 0, rotateY: 0 })
 
   const handlePanelMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -104,35 +105,35 @@ const Home = ({ experienceMode }: HomeProps) => {
     <div className="h-[calc(100dvh-4rem)] snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section className="relative min-h-[calc(100dvh-4rem)] snap-start overflow-hidden">
         <div className="absolute inset-0">
-          {isStudio ? null : (
+          {!useHorizonBanner && !isStudio ? (
             <img
               src="/home-hero-stage.png"
               alt="XR 虚拟演播室背景"
               className="h-full w-full object-cover"
             />
-          )}
+          ) : null}
           <div
             className={`absolute inset-0 ${
-              isStudio
+              useHorizonBanner
                 ? 'bg-[linear-gradient(180deg,#04030d_0%,#09072a_36%,#12104a_72%,#17165d_100%)]'
                 : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
-              isStudio
+              useHorizonBanner
                 ? 'bg-[radial-gradient(circle_at_50%_100%,rgba(207,198,255,0.38)_0%,rgba(166,144,255,0.28)_18%,rgba(103,89,219,0.16)_32%,transparent_56%),radial-gradient(circle_at_50%_78%,rgba(166,148,255,0.14)_0%,transparent_30%)]'
                 : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
-              isStudio
+              useHorizonBanner
                 ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_42%,rgba(255,255,255,0.03)_74%,rgba(255,255,255,0.06)_100%)]'
                 : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
             }`}
           />
-          {isStudio ? (
+          {useHorizonBanner ? (
             <>
               <div className="absolute inset-x-[6%] bottom-[7%] h-28 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.92)_0%,rgba(206,195,255,0.82)_18%,rgba(147,123,255,0.48)_36%,rgba(104,89,233,0.16)_58%,transparent_76%)] blur-2xl" />
               <div className="absolute inset-x-[12%] bottom-[5.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-90" />
@@ -203,7 +204,7 @@ const Home = ({ experienceMode }: HomeProps) => {
                 <img
                   src="/logo-wordmark.svg"
                   alt="HUYACHONG"
-                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(20rem,66vw)] opacity-82' : 'w-[min(30rem,70vw)]'}`}
+                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(24rem,72vw)] opacity-90' : 'w-[min(36rem,82vw)] opacity-95'}`}
                 />
               </div>
 
