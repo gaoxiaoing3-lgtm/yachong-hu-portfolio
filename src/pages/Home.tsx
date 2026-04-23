@@ -61,6 +61,21 @@ const studioQuickLinks = [
   { label: '联系', to: '/contact' },
 ]
 
+const studioParticles = [
+  { left: '18%', top: '60%', size: '2px', opacity: 0.35 },
+  { left: '28%', top: '48%', size: '1px', opacity: 0.28 },
+  { left: '34%', top: '55%', size: '1.5px', opacity: 0.32 },
+  { left: '42%', top: '50%', size: '1px', opacity: 0.3 },
+  { left: '46%', top: '57%', size: '2px', opacity: 0.6 },
+  { left: '50%', top: '53%', size: '3px', opacity: 0.95 },
+  { left: '54%', top: '49%', size: '2px', opacity: 0.72 },
+  { left: '57%', top: '58%', size: '1.5px', opacity: 0.4 },
+  { left: '61%', top: '51%', size: '2.5px', opacity: 0.82 },
+  { left: '65%', top: '46%', size: '1.5px', opacity: 0.45 },
+  { left: '69%', top: '55%', size: '1px', opacity: 0.26 },
+  { left: '74%', top: '61%', size: '1px', opacity: 0.22 },
+]
+
 const sectionReveal = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
@@ -99,35 +114,47 @@ const Home = ({ experienceMode }: HomeProps) => {
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[linear-gradient(120deg,rgba(4,7,12,0.98)_0%,rgba(4,7,12,0.94)_22%,rgba(4,7,12,0.82)_50%,rgba(4,7,12,0.76)_100%)]'
+                ? 'bg-[linear-gradient(180deg,#04030d_0%,#09072a_36%,#12104a_72%,#17165d_100%)]'
                 : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[radial-gradient(circle_at_14%_18%,rgba(128,160,190,0.18),transparent_18%),radial-gradient(circle_at_80%_24%,rgba(228,240,248,0.08),transparent_16%),radial-gradient(circle_at_50%_78%,rgba(88,108,140,0.18),transparent_24%)]'
+                ? 'bg-[radial-gradient(circle_at_50%_100%,rgba(207,198,255,0.38)_0%,rgba(166,144,255,0.28)_18%,rgba(103,89,219,0.16)_32%,transparent_56%),radial-gradient(circle_at_50%_78%,rgba(166,148,255,0.14)_0%,transparent_30%)]'
                 : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               isStudio
-                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_24%,rgba(255,255,255,0.02)_52%,transparent_100%)]'
+                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_42%,rgba(255,255,255,0.03)_74%,rgba(255,255,255,0.06)_100%)]'
                 : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
             }`}
           />
           {isStudio ? (
             <>
-              <div className="absolute -left-12 top-[10%] h-80 w-80 rounded-full bg-[#8aa8bf]/12 blur-3xl" />
-              <div className="absolute right-[-5rem] top-[18%] h-[32rem] w-[32rem] rounded-full bg-[#9dbcd4]/12 blur-3xl" />
-              <div className="absolute bottom-[-7rem] left-[24%] h-80 w-[30rem] rounded-full bg-white/6 blur-3xl" />
-              <div className="absolute left-[8%] top-[8%] h-[38rem] w-px bg-gradient-to-b from-transparent via-white/12 to-transparent" />
-              <div className="absolute right-[18%] top-[12%] h-[26rem] w-px bg-gradient-to-b from-transparent via-[#bfd5e6]/10 to-transparent" />
-              <div className="absolute left-[16%] top-[22%] h-px w-[44%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-              <div className="absolute right-[6%] top-[42%] h-px w-[28%] bg-gradient-to-r from-transparent via-[#afc8dd]/18 to-transparent" />
-              <div className="absolute bottom-[18%] left-[12%] h-px w-[54%] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_24%,rgba(255,255,255,0.05)_0%,transparent_24%),radial-gradient(circle_at_68%_56%,rgba(255,255,255,0.04)_0%,transparent_16%)]" />
+              <div className="absolute inset-x-[6%] bottom-[7%] h-28 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.92)_0%,rgba(206,195,255,0.82)_18%,rgba(147,123,255,0.48)_36%,rgba(104,89,233,0.16)_58%,transparent_76%)] blur-2xl" />
+              <div className="absolute inset-x-[12%] bottom-[5.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-90" />
+              <div className="absolute inset-x-[9%] bottom-[4.5%] h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-85" />
+              <div className="absolute inset-x-[20%] bottom-[3.8%] h-16 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.38)_0%,rgba(185,168,255,0.22)_24%,transparent_68%)] blur-2xl" />
+              <div className="absolute left-[-8%] top-[18%] h-72 w-72 rounded-full bg-[#1b1656]/42 blur-3xl" />
+              <div className="absolute right-[-10%] top-[12%] h-[24rem] w-[24rem] rounded-full bg-[#120f46]/48 blur-3xl" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_96%,rgba(255,255,255,0.12)_0%,transparent_18%)]" />
+              {studioParticles.map((particle, index) => (
+                <span
+                  key={`${particle.left}-${particle.top}-${index}`}
+                  className="absolute rounded-full bg-white blur-[0.5px]"
+                  style={{
+                    left: particle.left,
+                    top: particle.top,
+                    width: particle.size,
+                    height: particle.size,
+                    opacity: particle.opacity,
+                    boxShadow: `0 0 14px rgba(255,255,255,${particle.opacity})`,
+                  }}
+                />
+              ))}
             </>
           ) : null}
         </div>
