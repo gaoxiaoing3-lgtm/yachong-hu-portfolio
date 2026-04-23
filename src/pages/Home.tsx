@@ -81,17 +81,10 @@ const sectionReveal = {
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
 }
 
-type HomeProps = {
-  experienceMode: 'professional' | 'studio'
-}
-
-const Home = ({ experienceMode }: HomeProps) => {
-  const isStudio = experienceMode === 'studio'
-  const useHorizonBanner = true
+const Home = () => {
   const [panelTilt, setPanelTilt] = useState({ rotateX: 0, rotateY: 0 })
 
   const handlePanelMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!isStudio) return
     const rect = event.currentTarget.getBoundingClientRect()
     const relativeX = (event.clientX - rect.left) / rect.width - 0.5
     const relativeY = (event.clientY - rect.top) / rect.height - 0.5
@@ -105,210 +98,110 @@ const Home = ({ experienceMode }: HomeProps) => {
     <div className="h-[calc(100dvh-4rem)] snap-y snap-mandatory overflow-y-auto scroll-smooth">
       <section className="relative min-h-[calc(100dvh-4rem)] snap-start overflow-hidden">
         <div className="absolute inset-0">
-          {!useHorizonBanner && !isStudio ? (
-            <img
-              src="/home-hero-stage.png"
-              alt="XR 虚拟演播室背景"
-              className="h-full w-full object-cover"
-            />
-          ) : null}
-          <div
-            className={`absolute inset-0 ${
-              useHorizonBanner
-                ? 'bg-[linear-gradient(180deg,#03040a_0%,#070912_52%,#0a0d18_100%)]'
-                : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
-            }`}
-          />
-          <div
-            className={`absolute inset-0 ${
-              useHorizonBanner
-                ? 'bg-[radial-gradient(circle_at_18%_16%,rgba(58,74,126,0.18)_0%,transparent_24%),radial-gradient(circle_at_82%_18%,rgba(46,54,112,0.14)_0%,transparent_22%),radial-gradient(circle_at_50%_88%,rgba(96,88,168,0.10)_0%,transparent_30%)]'
-                : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
-            }`}
-          />
-          <div
-            className={`absolute inset-0 ${
-              useHorizonBanner
-                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.015)_0%,transparent_42%,rgba(255,255,255,0.02)_74%,rgba(255,255,255,0.03)_100%)]'
-                : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
-            }`}
-          />
-          {useHorizonBanner ? (
-            <>
-              <div className="absolute left-[-8%] top-[18%] h-72 w-72 rounded-full bg-[#1b1656]/42 blur-3xl" />
-              <div className="absolute right-[-10%] top-[12%] h-[24rem] w-[24rem] rounded-full bg-[#120f46]/48 blur-3xl" />
-            </>
-          ) : null}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,#020308_0%,#070912_52%,#090c18_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,rgba(58,74,126,0.16)_0%,transparent_24%),radial-gradient(circle_at_82%_18%,rgba(46,54,112,0.12)_0%,transparent_22%),radial-gradient(circle_at_50%_88%,rgba(96,88,168,0.08)_0%,transparent_30%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.015)_0%,transparent_42%,rgba(255,255,255,0.02)_74%,rgba(255,255,255,0.03)_100%)]" />
+          <div className="absolute left-[-8%] top-[18%] h-72 w-72 rounded-full bg-[#1b1656]/42 blur-3xl" />
+          <div className="absolute right-[-10%] top-[12%] h-[24rem] w-[24rem] rounded-full bg-[#120f46]/48 blur-3xl" />
         </div>
 
-        {useHorizonBanner ? (
-          <div className="pointer-events-none absolute inset-x-[5%] bottom-[12%] z-[1] h-[32vh] min-h-[220px] max-h-[320px] overflow-hidden rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,9,30,0.94)_0%,rgba(14,13,52,0.92)_42%,rgba(18,17,70,0.96)_100%)] shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_58%,rgba(255,255,255,0.03)_100%)]" />
-            <div className="absolute inset-x-[8%] bottom-[8%] h-24 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.94)_0%,rgba(210,200,255,0.82)_18%,rgba(149,127,255,0.46)_36%,rgba(104,89,233,0.14)_60%,transparent_76%)] blur-2xl" />
-            <div className="absolute inset-x-[14%] bottom-[6.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-95" />
-            <div className="absolute inset-x-[10%] bottom-[5.4%] h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-85" />
-            <div className="absolute inset-x-[22%] bottom-[4.5%] h-14 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.34)_0%,rgba(185,168,255,0.2)_24%,transparent_68%)] blur-2xl" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.12)_0%,transparent_18%)]" />
-            {studioParticles.map((particle, index) => (
-              <span
-                key={`${particle.left}-${particle.top}-${index}`}
-                className="absolute rounded-full bg-white blur-[0.5px]"
-                style={{
-                  left: particle.left,
-                  top: particle.top,
-                  width: particle.size,
-                  height: particle.size,
-                  opacity: particle.opacity,
-                  boxShadow: `0 0 14px rgba(255,255,255,${particle.opacity})`,
-                }}
-              />
-            ))}
-          </div>
-        ) : null}
+        <div className="pointer-events-none absolute inset-x-[5%] bottom-[12%] z-[1] h-[32vh] min-h-[220px] max-h-[320px] overflow-hidden rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,9,30,0.94)_0%,rgba(14,13,52,0.92)_42%,rgba(18,17,70,0.96)_100%)] shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_58%,rgba(255,255,255,0.03)_100%)]" />
+          <div className="absolute inset-x-[8%] bottom-[8%] h-24 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.94)_0%,rgba(210,200,255,0.82)_18%,rgba(149,127,255,0.46)_36%,rgba(104,89,233,0.14)_60%,transparent_76%)] blur-2xl" />
+          <div className="absolute inset-x-[14%] bottom-[6.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-95" />
+          <div className="absolute inset-x-[10%] bottom-[5.4%] h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-85" />
+          <div className="absolute inset-x-[22%] bottom-[4.5%] h-14 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.34)_0%,rgba(185,168,255,0.2)_24%,transparent_68%)] blur-2xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.12)_0%,transparent_18%)]" />
+          {studioParticles.map((particle, index) => (
+            <span
+              key={`${particle.left}-${particle.top}-${index}`}
+              className="absolute rounded-full bg-white blur-[0.5px]"
+              style={{
+                left: particle.left,
+                top: particle.top,
+                width: particle.size,
+                height: particle.size,
+                opacity: particle.opacity,
+                boxShadow: `0 0 14px rgba(255,255,255,${particle.opacity})`,
+              }}
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 flex min-h-[calc(100dvh-4rem)] items-center section-padding">
-          <div className={`container-custom ${isStudio ? 'flex justify-center md:justify-start' : ''}`}>
+          <div className="container-custom">
             <motion.div
               initial="hidden"
               animate="show"
               variants={sectionReveal}
-              onMouseMove={handlePanelMove}
-              onMouseLeave={() => setPanelTilt({ rotateX: 0, rotateY: 0 })}
-              style={
-                isStudio
-                  ? {
-                      transform: `perspective(1600px) rotateX(${panelTilt.rotateX}deg) rotateY(${panelTilt.rotateY}deg)`,
-                      transformStyle: 'preserve-3d',
-                    }
-                  : undefined
-              }
-              className={`max-w-4xl rounded-[2.5rem] px-6 py-8 backdrop-blur-xl transition-transform duration-200 ease-out md:px-10 md:py-10 ${
-                isStudio
-                  ? 'studio-glass-panel studio-glow-line relative mx-auto min-h-[42rem] w-full max-w-[34rem] overflow-hidden rounded-[2.9rem]'
-                  : 'relative max-w-[54rem] border border-white/12 bg-[linear-gradient(180deg,rgba(10,12,24,0.56)_0%,rgba(10,12,24,0.34)_46%,rgba(10,12,24,0.24)_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.22)]'
-              }`}
+              className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]"
             >
-              {isStudio ? (
-                <>
-                  <div className="pointer-events-none absolute -left-[10%] top-[8%] h-48 w-[60%] rounded-full bg-white/10 blur-3xl" />
-                  <div className="pointer-events-none absolute -right-[10%] top-[22%] h-56 w-[48%] rounded-full bg-[#b0cde1]/12 blur-3xl" />
-                  <div className="pointer-events-none absolute bottom-[10%] left-[18%] h-24 w-[58%] rounded-full bg-white/6 blur-2xl" />
-                  <div className="pointer-events-none absolute left-[10%] top-[17%] h-px w-[72%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                  <div className="pointer-events-none absolute right-[8%] top-[12%] h-20 w-20 rounded-full border border-white/10 bg-white/4 blur-[1px]" />
-                </>
-              ) : useHorizonBanner ? (
-                <>
-                  <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,transparent_34%,rgba(255,255,255,0.02)_100%)]" />
-                  <div className="pointer-events-none absolute left-[8%] top-[12%] h-24 w-[26rem] rounded-full bg-white/6 blur-3xl" />
-                  <div className="pointer-events-none absolute bottom-[8%] left-[12%] h-20 w-[46%] rounded-full bg-[#b8abff]/10 blur-3xl" />
-                </>
-              ) : null}
-              <div className={`inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm text-white font-ui backdrop-blur-md [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] ${
-                isStudio
-                  ? 'studio-glass-chip'
-                  : 'border border-white/18 bg-white/6 shadow-[0_8px_24px_rgba(0,0,0,0.18)]'
-              }`}>
-                <span className="h-2 w-2 rounded-full bg-primary-400" />
-                {isStudio ? 'STUDIO MODE / FUTURE BROADCAST ENVIRONMENT' : 'XR / VR / AR 技术专家'}
-              </div>
+              <div className="relative z-10 max-w-xl">
+                <div className="inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/6 px-4 py-2 text-sm text-white/86 shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-md font-ui">
+                  <span className="h-2 w-2 rounded-full bg-primary-400" />
+                  XR / 广电 / 实时视觉系统
+                </div>
 
-              <div className="mt-7 inline-flex max-w-full px-1 py-1">
-                <img
-                  src="/logo-wordmark.svg"
-                  alt="HUYACHONG"
-                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(16rem,54vw)] opacity-88' : 'w-[min(18rem,48vw)] opacity-92'}`}
-                />
-              </div>
+                <div className="mt-7 inline-flex max-w-full px-1 py-1">
+                  <img
+                    src="/logo-wordmark.svg"
+                    alt="HUYACHONG"
+                    className="logo-adaptive h-auto w-[min(16rem,46vw)] opacity-90"
+                  />
+                </div>
 
-              {isStudio ? (
-                <>
-                  <div className="mt-10">
-                    <div className="font-display text-[4.4rem] font-semibold leading-[0.92] tracking-[0.01em] text-white drop-shadow-[0_14px_40px_rgba(0,0,0,0.42)] md:text-[5.4rem]">
-                      虚拟空间
-                      <br />
-                      构建
-                    </div>
-                    <div className="mt-5 max-w-sm font-ui text-[0.9rem] uppercase tracking-[0.24em] text-white/72">
-                      胡亚崇 · XR / 广电 / 实时视觉
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <h1 className="mt-8 font-display text-[3rem] font-semibold leading-[0.98] tracking-[0.015em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.55)] md:text-[4.5rem] xl:text-[5.4rem]">
-                  胡亚崇
+                <h1 className="mt-8 font-display text-[3.4rem] font-semibold leading-[0.92] tracking-[0.01em] text-white drop-shadow-[0_14px_40px_rgba(0,0,0,0.42)] md:text-[5rem]">
+                  虚拟空间
                   <br />
-                  虚拟制作
-                  <br />
-                  技术负责人
+                  构建
                 </h1>
-              )}
+                <div className="mt-5 max-w-sm font-ui text-[0.92rem] uppercase tracking-[0.22em] text-white/70">
+                  胡亚崇 · XR / 广电 / 实时视觉
+                </div>
 
-              <p className={`mt-8 ${isStudio ? 'max-w-sm text-base text-white/76' : 'max-w-2xl text-lg text-white md:text-xl'} leading-relaxed [text-shadow:0_2px_14px_rgba(0,0,0,0.48)]`}>
-                {isStudio
-                  ? '面向演播室、直播、品牌发布与实时内容环境，构建兼具空间秩序、视觉系统与技术落地的数字场域。'
-                  : '长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。'}
-              </p>
+                <p className="mt-8 max-w-xl text-base leading-relaxed text-white/78 md:text-lg [text-shadow:0_2px_14px_rgba(0,0,0,0.42)]">
+                  面向演播室、直播、品牌发布与实时内容环境，构建兼具空间秩序、视觉系统与技术落地的数字场域。
+                </p>
 
-              {isStudio ? (
-                <div className="mt-8 grid gap-3">
-                  {[
-                    ['Field', 'Future studio environment'],
-                    ['Surface', 'Liquid glass interaction'],
-                    ['Motion', 'Mouse-reactive screen tilt'],
-                  ].map(([label, text]) => (
-                    <div
-                      key={label}
-                      className="studio-glass-chip rounded-[1.25rem] px-4 py-3"
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {studioQuickLinks.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      className="studio-glass-chip rounded-full px-5 py-2.5 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 font-ui"
                     >
-                      <div className="font-ui text-[0.66rem] uppercase tracking-[0.18em] text-[#b7cad8]">
-                        {label}
-                      </div>
-                      <div className="mt-2 text-sm text-white/84">{text}</div>
-                    </div>
+                      {item.label}
+                    </Link>
                   ))}
                 </div>
-              ) : null}
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {isStudio
-                  ? studioQuickLinks.map((item) => (
-                      <Link
-                        key={item.label}
-                        to={item.to}
-                        className="studio-glass-chip rounded-full px-5 py-2.5 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
-                      >
-                        {item.label}
-                      </Link>
-                    ))
-                  : ['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/28 bg-black/34 px-4 py-2 text-sm font-medium text-white shadow-[0_6px_18px_rgba(0,0,0,0.24)] backdrop-blur-sm font-ui [text-shadow:0_1px_10px_rgba(0,0,0,0.36)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                {isStudio ? null : (
-                  <>
-                    <Link
-                      to="/about"
-                      className="inline-flex items-center rounded-full bg-white px-8 py-4 text-base font-medium text-ink-900 transition-colors hover:bg-surface-100 font-ui"
-                    >
-                      查看履历
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                    <Link
-                      to="/portfolio"
-                      className="inline-flex items-center rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white transition-colors hover:bg-white/10 font-ui"
-                    >
-                      作品集
-                    </Link>
-                  </>
-                )}
-              </div>
+              <motion.div
+                onMouseMove={handlePanelMove}
+                onMouseLeave={() => setPanelTilt({ rotateX: 0, rotateY: 0 })}
+                style={{
+                  transform: `perspective(1600px) rotateX(${panelTilt.rotateX}deg) rotateY(${panelTilt.rotateY}deg)`,
+                  transformStyle: 'preserve-3d',
+                }}
+                className="relative min-h-[28rem] lg:min-h-[34rem]"
+              >
+                <div className="absolute inset-x-[2%] top-[4%] h-[84%] rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.03)_100%)] shadow-[0_32px_80px_rgba(0,0,0,0.24)] backdrop-blur-[18px]" />
+                <div className="absolute left-[8%] top-[10%] h-[15rem] w-[42%] rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0.04)_100%)] shadow-[0_24px_50px_rgba(0,0,0,0.24)] backdrop-blur-[18px]" />
+                <div className="absolute left-[12%] top-[16%] h-3 w-[28%] rounded-full bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.45)]" />
+                <div className="absolute left-[12%] top-[23%] h-14 w-[34%] rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,9,18,0.92)_0%,rgba(18,20,34,0.94)_100%)] shadow-[0_16px_34px_rgba(0,0,0,0.28)]" />
+                <div className="absolute left-[12%] top-[35%] h-12 w-[24%] rounded-full border border-white/12 bg-white/8 backdrop-blur-md" />
+                <div className="absolute left-[38%] top-[19%] h-[20rem] w-[50%] rounded-[2.2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] shadow-[0_28px_68px_rgba(0,0,0,0.26)] backdrop-blur-[22px]" />
+                <div className="absolute left-[43%] top-[25%] h-16 w-[34%] rounded-[1.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(9,11,23,0.95)_0%,rgba(18,21,42,0.95)_100%)] shadow-[0_18px_34px_rgba(0,0,0,0.24)]" />
+                <div className="absolute left-[43%] top-[37%] h-[5px] w-[38%] rounded-full bg-gradient-to-r from-white/20 via-[#cbbcff] to-transparent" />
+                <div className="absolute left-[43%] top-[45%] h-24 w-[30%] rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.03)_100%)] backdrop-blur-md" />
+                <div className="absolute left-[76%] top-[42%] flex h-24 w-24 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.04)_100%)] shadow-[0_18px_34px_rgba(0,0,0,0.24)] backdrop-blur-md">
+                  <div className="h-9 w-9 rounded-full border border-white/20 bg-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]" />
+                </div>
+                <div className="absolute left-[16%] bottom-[10%] h-16 w-[38%] rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] shadow-[0_18px_34px_rgba(0,0,0,0.2)] backdrop-blur-md" />
+                <div className="absolute left-[58%] bottom-[10%] h-16 w-[22%] rounded-[1.4rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.04)_100%)] shadow-[0_18px_34px_rgba(0,0,0,0.2)] backdrop-blur-md" />
+                <div className="absolute left-[10%] top-[8%] h-28 w-48 rounded-full bg-white/8 blur-3xl" />
+                <div className="absolute right-[8%] top-[20%] h-36 w-36 rounded-full bg-[#b6c8ff]/10 blur-3xl" />
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -324,65 +217,30 @@ const Home = ({ experienceMode }: HomeProps) => {
             className="grid gap-12 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-4">
-              <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">
-                {isStudio ? 'Studio Window' : 'Specialties'}
-              </span>
+              <span className="font-ui text-sm uppercase tracking-[0.24em] text-primary-300">Specialties</span>
               <h2 className="mt-4 font-display text-4xl font-semibold md:text-5xl">
-                {isStudio ? '第二屏窗口预留' : '专业方向'}
+                专业方向
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/68">
-                {isStudio
-                  ? '这里先预留未来演播室的第二屏内容窗口。后续可接连续场景、镜头推进、环境音控制和实时信息层。'
-                  : '从广电级演播室到品牌直播现场，长期聚焦虚拟技术的方案、实施与交付。'}
+                从广电级演播室到品牌直播现场，长期聚焦虚拟技术的方案、实施与交付。
               </p>
             </div>
 
             <div className="lg:col-span-8 grid gap-5 md:grid-cols-2">
-              {isStudio ? (
-                <div className="md:col-span-2 rounded-[2rem] border border-[#9ab7cf]/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.07)_0%,rgba(255,255,255,0.03)_100%)] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl">
-                  <div className="flex flex-wrap items-start justify-between gap-6">
-                    <div className="max-w-xl">
-                      <div className="font-ui text-xs uppercase tracking-[0.2em] text-primary-300">
-                        Reserved Scene Panel
-                      </div>
-                      <h3 className="mt-3 font-display text-3xl text-white">Studio Mode / Screen Two</h3>
-                      <p className="mt-4 text-base leading-relaxed text-white/72">
-                        这里预留给连续空间的第二阶段。后续可接入场景推进、控制台数据层、
-                        局部视频面板、声音开关和轻量粒子系统。
-                      </p>
+              {specialties.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
+                >
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
+                      <Sparkles className="h-5 w-5 text-primary-300" />
                     </div>
-                    <div className="grid min-w-[16rem] gap-3">
-                      {[
-                        'Window A / ambient layer',
-                        'Window B / control panel',
-                        'Window C / scene transition',
-                      ].map((item) => (
-                        <div
-                          key={item}
-                          className="rounded-[1.1rem] border border-white/10 bg-black/18 px-4 py-3 font-ui text-xs uppercase tracking-[0.16em] text-white/78"
-                        >
-                          {item}
-                        </div>
-                      ))}
-                    </div>
+                    <h3 className="font-display text-2xl">{item.title}</h3>
                   </div>
+                  <p className="leading-relaxed text-white/68">{item.text}</p>
                 </div>
-              ) : (
-                specialties.map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-[2rem] border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
-                  >
-                    <div className="mb-4 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10">
-                        <Sparkles className="h-5 w-5 text-primary-300" />
-                      </div>
-                      <h3 className="font-display text-2xl">{item.title}</h3>
-                    </div>
-                    <p className="leading-relaxed text-white/68">{item.text}</p>
-                  </div>
-                ))
-              )}
+              ))}
             </div>
           </motion.div>
         </div>

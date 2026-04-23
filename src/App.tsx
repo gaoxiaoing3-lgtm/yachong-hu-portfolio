@@ -1,5 +1,5 @@
 import type React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -9,33 +9,17 @@ import Portfolio from './pages/Portfolio'
 import About from './pages/About'
 import Contact from './pages/Contact'
 
-type ExperienceMode = 'professional' | 'studio'
-
 function AppShell() {
   const location = useLocation()
   const isHome = location.pathname === '/'
-  const [experienceMode, setExperienceMode] = useState<ExperienceMode>('professional')
 
   useEffect(() => {
     document.documentElement.dataset.theme = 'night'
-
-    const savedMode = window.localStorage.getItem('site-experience-mode')
-    setExperienceMode(savedMode === 'studio' ? 'studio' : 'professional')
   }, [])
 
-  const toggleExperienceMode = () => {
-    const nextMode: ExperienceMode =
-      experienceMode === 'professional' ? 'studio' : 'professional'
-    setExperienceMode(nextMode)
-    window.localStorage.setItem('site-experience-mode', nextMode)
-  }
-
   return (
-    <div className={`min-h-[100dvh] flex flex-col gradient-bg ${experienceMode === 'studio' ? 'studio-shell' : ''}`}>
-      <Navbar
-        experienceMode={experienceMode}
-        onToggleExperienceMode={toggleExperienceMode}
-      />
+    <div className="min-h-[100dvh] flex flex-col gradient-bg studio-shell">
+      <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
           initial={{ opacity: 0 }}
@@ -45,7 +29,7 @@ function AppShell() {
           className="flex-grow"
         >
           <Routes>
-            <Route path="/" element={<Home experienceMode={experienceMode} />} />
+            <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
