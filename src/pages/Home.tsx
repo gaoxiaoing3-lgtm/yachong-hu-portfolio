@@ -55,6 +55,8 @@ const metrics = [
   { label: '项目类型', value: '直播 / 演播室 / 包装' },
 ]
 
+const heroQuickLinks = ['XR / VR / AR', '虚拟演播室', '广电与直播技术', 'LED 虚拟制作']
+
 const sectionReveal = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
@@ -80,12 +82,107 @@ const Home = () => {
               variants={sectionReveal}
               className="mx-auto max-w-[1600px]"
             >
-              <div className="overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_28px_80px_rgba(0,0,0,0.32)]">
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,10,18,0.76)_0%,rgba(10,12,20,0.82)_100%)] shadow-[0_28px_80px_rgba(0,0,0,0.32)] min-h-[42rem]">
                 <img
                   src="/home-hero-3d-ui.png"
-                  alt="HUYACHONG 3D UI hero"
-                  className="block h-auto w-full"
+                  alt="HUYACHONG 3D UI hero reference"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.24] mix-blend-screen"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,9,16,0.84)_0%,rgba(7,9,16,0.76)_28%,rgba(7,9,16,0.52)_48%,rgba(7,9,16,0.34)_68%,rgba(7,9,16,0.46)_100%)]" />
+                <div className="relative z-10 grid min-h-[42rem] items-center gap-8 px-10 py-10 lg:grid-cols-[0.92fr_1.08fr] lg:px-14 lg:py-14">
+                  <div className="max-w-xl">
+                    <div className="font-ui text-[0.7rem] uppercase tracking-[0.38em] text-white/55">
+                      TECHNICAL CREATIVE PORTFOLIO
+                    </div>
+                    <div className="mt-6 flex flex-wrap items-center gap-4">
+                      <img
+                        src="/logo-wordmark.svg"
+                        alt="HUYACHONG"
+                        className="logo-adaptive h-auto w-[min(30rem,72vw)] opacity-90"
+                      />
+                      <div className="rounded-full border border-white/12 bg-white/6 px-5 py-2 text-sm text-white/76 backdrop-blur-md font-ui">
+                        XR / VR / AR 专家
+                      </div>
+                    </div>
+
+                    <div className="mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#cbbcff] to-transparent shadow-[0_0_18px_rgba(182,168,255,0.65)]" />
+
+                    <h1 className="mt-6 font-display text-[3.35rem] font-semibold leading-[0.94] tracking-[0.01em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,0.46)] md:text-[4.7rem] xl:text-[5.6rem]">
+                      虚拟空间构建
+                      <br />
+                      技术负责人
+                    </h1>
+
+                    <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/62 md:text-lg">
+                      长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
+                    </p>
+
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      {heroQuickLinks.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/12 bg-black/22 px-4 py-2 text-sm text-white/78 backdrop-blur-md font-ui"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      <Link
+                        to="/portfolio"
+                        className="inline-flex items-center rounded-full bg-[linear-gradient(180deg,#e8e5ff_0%,#bcb1ff_100%)] px-8 py-4 text-base font-medium text-[#131523] shadow-[0_10px_28px_rgba(156,141,255,0.34)] transition-transform hover:-translate-y-0.5 font-ui"
+                      >
+                        查看作品集
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                      <Link
+                        to="/about"
+                        className="inline-flex items-center rounded-full border border-white/12 bg-white/5 px-8 py-4 text-base font-medium text-white/82 backdrop-blur-md transition-transform hover:-translate-y-0.5 font-ui"
+                      >
+                        了解更多
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="relative min-h-[28rem] lg:min-h-[34rem]">
+                    <div className="absolute left-[6%] top-[4%] h-[15.8rem] w-[42%] rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(23,27,45,0.94)_0%,rgba(15,18,30,0.94)_100%)] shadow-[0_24px_54px_rgba(0,0,0,0.3)]" />
+                    <div className="absolute left-[10%] top-[8%] h-[9.2rem] w-[34%] overflow-hidden rounded-[1.45rem] border border-white/10 bg-[radial-gradient(circle_at_50%_40%,rgba(116,111,255,0.95)_0%,rgba(39,47,107,0.8)_36%,rgba(15,17,30,0.96)_72%)]">
+                      <div className="absolute inset-x-[12%] top-[18%] h-[2px] bg-gradient-to-r from-transparent via-[#c3b6ff] to-transparent" />
+                      <div className="absolute inset-x-[18%] top-[34%] h-14 rounded-full border border-[#8d83ff]/40" />
+                      <div className="absolute inset-x-[24%] top-[44%] h-10 rounded-full border border-[#8d83ff]/30" />
+                      <div className="absolute inset-x-[20%] bottom-[22%] h-8 rounded-full border border-[#8d83ff]/25" />
+                    </div>
+                    <div className="absolute left-[40%] top-[4%] h-[15.8rem] w-[18%] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(180deg,rgba(27,31,49,0.96)_0%,rgba(16,18,28,0.96)_100%)] shadow-[0_24px_54px_rgba(0,0,0,0.3)]" />
+                    <div className="absolute left-[44%] top-[10%] h-[2px] w-[8%] rounded-full bg-[#bcb1ff] shadow-[0_0_16px_rgba(188,177,255,0.8)]" />
+                    <div className="absolute left-[44%] top-[14%] h-[2px] w-[8%] rounded-full bg-[#bcb1ff] shadow-[0_0_16px_rgba(188,177,255,0.8)]" />
+                    <div className="absolute left-[44%] top-[18%] h-[2px] w-[8%] rounded-full bg-[#bcb1ff] shadow-[0_0_16px_rgba(188,177,255,0.8)]" />
+                    <div className="absolute left-[43.2%] top-[25%] flex h-[5.8rem] w-[10%] items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(34,37,55,0.98)_0%,rgba(18,20,30,0.98)_100%)] shadow-[0_18px_34px_rgba(0,0,0,0.28)]">
+                      <div className="h-[4rem] w-[4rem] rounded-full border border-white/16 bg-[radial-gradient(circle_at_40%_35%,rgba(255,255,255,0.8)_0%,rgba(139,137,153,0.26)_24%,rgba(71,75,93,0.9)_68%,rgba(22,23,32,1)_100%)] shadow-[0_0_16px_rgba(191,181,255,0.4)]" />
+                    </div>
+                    <div className="absolute right-[0%] top-[2%] h-[9rem] w-[42%] rounded-[1.7rem] border border-white/12 bg-[linear-gradient(180deg,rgba(29,32,45,0.92)_0%,rgba(17,19,28,0.92)_100%)] shadow-[0_20px_44px_rgba(0,0,0,0.28)] p-5">
+                      <div className="font-ui text-[0.72rem] uppercase tracking-[0.18em] text-white/56">System Status</div>
+                      <div className="mt-5 grid grid-cols-3 gap-4 text-white/78">
+                        <div><div className="text-[0.72rem] text-white/40">Render</div><div className="mt-2 text-3xl">12</div></div>
+                        <div><div className="text-[0.72rem] text-white/40">Tracking</div><div className="mt-2 text-3xl">98%</div></div>
+                        <div><div className="text-[0.72rem] text-white/40">Stream</div><div className="mt-2 text-3xl">2.36</div></div>
+                      </div>
+                    </div>
+                    <div className="absolute left-[0%] top-[56%] h-[9.5rem] w-[24%] rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(25,28,40,0.92)_0%,rgba(15,17,26,0.92)_100%)] shadow-[0_18px_42px_rgba(0,0,0,0.24)] p-4" />
+                    <div className="absolute left-[5%] top-[63%] h-[2px] w-[10%] rounded-full bg-[#c6baff]" />
+                    <div className="absolute left-[28%] top-[58%] h-[9.5rem] w-[28%] rounded-[1.6rem] border border-white/12 bg-[linear-gradient(180deg,rgba(25,28,40,0.92)_0%,rgba(15,17,26,0.92)_100%)] shadow-[0_18px_42px_rgba(0,0,0,0.24)] p-4" />
+                    <div className="absolute right-[0%] top-[43%] h-[14rem] w-[26%] rounded-[1.8rem] border border-white/12 bg-[linear-gradient(180deg,rgba(25,28,40,0.92)_0%,rgba(13,15,24,0.92)_100%)] shadow-[0_20px_46px_rgba(0,0,0,0.28)]" />
+                    <div className="absolute right-[4%] top-[51%] h-[5rem] w-[18%] bg-[radial-gradient(circle_at_center,rgba(194,188,255,0.5)_0%,transparent_60%)] blur-2xl" />
+                    <div className="absolute left-[46%] bottom-[9%] h-[5.3rem] w-[40%] rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(31,34,49,0.94)_0%,rgba(18,20,31,0.94)_100%)] shadow-[0_24px_50px_rgba(0,0,0,0.28)]" />
+                    <div className="absolute left-[50%] bottom-[12%] h-[2.6rem] w-[8%] rounded-xl border border-white/10 bg-white/4" />
+                    <div className="absolute left-[60%] bottom-[12%] h-[2.6rem] w-[8%] rounded-xl border border-white/10 bg-white/4" />
+                    <div className="absolute left-[70%] bottom-[11.5%] flex h-[3.2rem] w-[9%] items-center justify-center rounded-full border border-[#b9aeff]/30 bg-[radial-gradient(circle,rgba(188,177,255,0.78)_0%,rgba(80,79,171,0.34)_32%,rgba(24,25,36,0.94)_76%)] shadow-[0_0_20px_rgba(188,177,255,0.34)]" />
+                    <div className="absolute right-[6%] bottom-[11.5%] flex h-[3.2rem] w-[9%] items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,rgba(31,34,49,0.94)_0%,rgba(18,20,31,0.94)_100%)]">
+                      <div className="h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-[#8b82ff] border-t-transparent ml-1" />
+                    </div>
+                    <div className="absolute left-[9%] bottom-[3%] h-5 w-[24%] rounded-full bg-white/6 blur-xl" />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
