@@ -115,50 +115,56 @@ const Home = ({ experienceMode }: HomeProps) => {
           <div
             className={`absolute inset-0 ${
               useHorizonBanner
-                ? 'bg-[linear-gradient(180deg,#04030d_0%,#09072a_36%,#12104a_72%,#17165d_100%)]'
+                ? 'bg-[linear-gradient(180deg,#03040a_0%,#070912_52%,#0a0d18_100%)]'
                 : 'bg-[linear-gradient(90deg,rgba(6,10,16,0.94)_0%,rgba(6,10,16,0.84)_34%,rgba(6,10,16,0.46)_64%,rgba(6,10,16,0.24)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               useHorizonBanner
-                ? 'bg-[radial-gradient(circle_at_50%_100%,rgba(207,198,255,0.38)_0%,rgba(166,144,255,0.28)_18%,rgba(103,89,219,0.16)_32%,transparent_56%),radial-gradient(circle_at_50%_78%,rgba(166,148,255,0.14)_0%,transparent_30%)]'
+                ? 'bg-[radial-gradient(circle_at_18%_16%,rgba(58,74,126,0.18)_0%,transparent_24%),radial-gradient(circle_at_82%_18%,rgba(46,54,112,0.14)_0%,transparent_22%),radial-gradient(circle_at_50%_88%,rgba(96,88,168,0.10)_0%,transparent_30%)]'
                 : 'bg-[linear-gradient(180deg,rgba(6,10,16,0.28)_0%,rgba(6,10,16,0.18)_22%,rgba(6,10,16,0.38)_100%)]'
             }`}
           />
           <div
             className={`absolute inset-0 ${
               useHorizonBanner
-                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_42%,rgba(255,255,255,0.03)_74%,rgba(255,255,255,0.06)_100%)]'
+                ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.015)_0%,transparent_42%,rgba(255,255,255,0.02)_74%,rgba(255,255,255,0.03)_100%)]'
                 : 'bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.16),transparent_28%)]'
             }`}
           />
           {useHorizonBanner ? (
             <>
-              <div className="absolute inset-x-[6%] bottom-[7%] h-28 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.92)_0%,rgba(206,195,255,0.82)_18%,rgba(147,123,255,0.48)_36%,rgba(104,89,233,0.16)_58%,transparent_76%)] blur-2xl" />
-              <div className="absolute inset-x-[12%] bottom-[5.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-90" />
-              <div className="absolute inset-x-[9%] bottom-[4.5%] h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-85" />
-              <div className="absolute inset-x-[20%] bottom-[3.8%] h-16 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.38)_0%,rgba(185,168,255,0.22)_24%,transparent_68%)] blur-2xl" />
               <div className="absolute left-[-8%] top-[18%] h-72 w-72 rounded-full bg-[#1b1656]/42 blur-3xl" />
               <div className="absolute right-[-10%] top-[12%] h-[24rem] w-[24rem] rounded-full bg-[#120f46]/48 blur-3xl" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_96%,rgba(255,255,255,0.12)_0%,transparent_18%)]" />
-              {studioParticles.map((particle, index) => (
-                <span
-                  key={`${particle.left}-${particle.top}-${index}`}
-                  className="absolute rounded-full bg-white blur-[0.5px]"
-                  style={{
-                    left: particle.left,
-                    top: particle.top,
-                    width: particle.size,
-                    height: particle.size,
-                    opacity: particle.opacity,
-                    boxShadow: `0 0 14px rgba(255,255,255,${particle.opacity})`,
-                  }}
-                />
-              ))}
             </>
           ) : null}
         </div>
+
+        {useHorizonBanner ? (
+          <div className="pointer-events-none absolute inset-x-[5%] bottom-[12%] z-[1] h-[32vh] min-h-[220px] max-h-[320px] overflow-hidden rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(8,9,30,0.94)_0%,rgba(14,13,52,0.92)_42%,rgba(18,17,70,0.96)_100%)] shadow-[0_30px_90px_rgba(0,0,0,0.32)]">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02)_0%,transparent_58%,rgba(255,255,255,0.03)_100%)]" />
+            <div className="absolute inset-x-[8%] bottom-[8%] h-24 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.94)_0%,rgba(210,200,255,0.82)_18%,rgba(149,127,255,0.46)_36%,rgba(104,89,233,0.14)_60%,transparent_76%)] blur-2xl" />
+            <div className="absolute inset-x-[14%] bottom-[6.5%] h-[3px] bg-gradient-to-r from-transparent via-[#cab8ff] to-transparent opacity-95" />
+            <div className="absolute inset-x-[10%] bottom-[5.4%] h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-85" />
+            <div className="absolute inset-x-[22%] bottom-[4.5%] h-14 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.34)_0%,rgba(185,168,255,0.2)_24%,transparent_68%)] blur-2xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_90%,rgba(255,255,255,0.12)_0%,transparent_18%)]" />
+            {studioParticles.map((particle, index) => (
+              <span
+                key={`${particle.left}-${particle.top}-${index}`}
+                className="absolute rounded-full bg-white blur-[0.5px]"
+                style={{
+                  left: particle.left,
+                  top: particle.top,
+                  width: particle.size,
+                  height: particle.size,
+                  opacity: particle.opacity,
+                  boxShadow: `0 0 14px rgba(255,255,255,${particle.opacity})`,
+                }}
+              />
+            ))}
+          </div>
+        ) : null}
 
         <div className="relative z-10 flex min-h-[calc(100dvh-4rem)] items-center section-padding">
           <div className={`container-custom ${isStudio ? 'flex justify-center md:justify-start' : ''}`}>
@@ -204,7 +210,7 @@ const Home = ({ experienceMode }: HomeProps) => {
                 <img
                   src="/logo-wordmark.svg"
                   alt="HUYACHONG"
-                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(24rem,72vw)] opacity-90' : 'w-[min(36rem,82vw)] opacity-95'}`}
+                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(16rem,54vw)] opacity-88' : 'w-[min(22rem,58vw)] opacity-92'}`}
                 />
               </div>
 
