@@ -14,25 +14,14 @@ type ExperienceMode = 'professional' | 'studio'
 function AppShell() {
   const location = useLocation()
   const isHome = location.pathname === '/'
-  const [theme, setTheme] = useState<'day' | 'night'>('day')
   const [experienceMode, setExperienceMode] = useState<ExperienceMode>('professional')
 
   useEffect(() => {
-    const saved = window.localStorage.getItem('site-theme')
-    const initialTheme = saved === 'night' ? 'night' : 'day'
-    setTheme(initialTheme)
-    document.documentElement.dataset.theme = initialTheme
+    document.documentElement.dataset.theme = 'night'
 
     const savedMode = window.localStorage.getItem('site-experience-mode')
     setExperienceMode(savedMode === 'studio' ? 'studio' : 'professional')
   }, [])
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'day' ? 'night' : 'day'
-    setTheme(nextTheme)
-    document.documentElement.dataset.theme = nextTheme
-    window.localStorage.setItem('site-theme', nextTheme)
-  }
 
   const toggleExperienceMode = () => {
     const nextMode: ExperienceMode =
@@ -44,8 +33,6 @@ function AppShell() {
   return (
     <div className={`min-h-[100dvh] flex flex-col gradient-bg ${experienceMode === 'studio' ? 'studio-shell' : ''}`}>
       <Navbar
-        theme={theme}
-        onToggleTheme={toggleTheme}
         experienceMode={experienceMode}
         onToggleExperienceMode={toggleExperienceMode}
       />
