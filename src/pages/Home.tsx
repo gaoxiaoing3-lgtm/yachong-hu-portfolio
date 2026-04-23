@@ -185,7 +185,7 @@ const Home = ({ experienceMode }: HomeProps) => {
               className={`max-w-4xl rounded-[2.5rem] px-6 py-8 backdrop-blur-xl transition-transform duration-200 ease-out md:px-10 md:py-10 ${
                 isStudio
                   ? 'studio-glass-panel studio-glow-line relative mx-auto min-h-[42rem] w-full max-w-[34rem] overflow-hidden rounded-[2.9rem]'
-                  : 'border border-white/12 bg-[linear-gradient(180deg,rgba(4,8,14,0.72)_0%,rgba(7,11,18,0.62)_46%,rgba(8,12,19,0.68)_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.28)]'
+                  : 'relative max-w-[54rem] border border-white/12 bg-[linear-gradient(180deg,rgba(10,12,24,0.56)_0%,rgba(10,12,24,0.34)_46%,rgba(10,12,24,0.24)_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.22)]'
               }`}
             >
               {isStudio ? (
@@ -196,11 +196,17 @@ const Home = ({ experienceMode }: HomeProps) => {
                   <div className="pointer-events-none absolute left-[10%] top-[17%] h-px w-[72%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                   <div className="pointer-events-none absolute right-[8%] top-[12%] h-20 w-20 rounded-full border border-white/10 bg-white/4 blur-[1px]" />
                 </>
+              ) : useHorizonBanner ? (
+                <>
+                  <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,transparent_34%,rgba(255,255,255,0.02)_100%)]" />
+                  <div className="pointer-events-none absolute left-[8%] top-[12%] h-24 w-[26rem] rounded-full bg-white/6 blur-3xl" />
+                  <div className="pointer-events-none absolute bottom-[8%] left-[12%] h-20 w-[46%] rounded-full bg-[#b8abff]/10 blur-3xl" />
+                </>
               ) : null}
               <div className={`inline-flex items-center gap-3 rounded-full px-4 py-2 text-sm text-white font-ui backdrop-blur-md [text-shadow:0_2px_12px_rgba(0,0,0,0.45)] ${
                 isStudio
                   ? 'studio-glass-chip'
-                  : 'border border-white/30 bg-black/26 shadow-[0_8px_24px_rgba(0,0,0,0.24)]'
+                  : 'border border-white/18 bg-white/6 shadow-[0_8px_24px_rgba(0,0,0,0.18)]'
               }`}>
                 <span className="h-2 w-2 rounded-full bg-primary-400" />
                 {isStudio ? 'STUDIO MODE / FUTURE BROADCAST ENVIRONMENT' : 'XR / VR / AR 技术专家'}
@@ -210,7 +216,7 @@ const Home = ({ experienceMode }: HomeProps) => {
                 <img
                   src="/logo-wordmark.svg"
                   alt="HUYACHONG"
-                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(16rem,54vw)] opacity-88' : 'w-[min(22rem,58vw)] opacity-92'}`}
+                  className={`logo-adaptive h-auto ${isStudio ? 'w-[min(16rem,54vw)] opacity-88' : 'w-[min(18rem,48vw)] opacity-92'}`}
                 />
               </div>
 
