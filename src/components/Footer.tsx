@@ -47,7 +47,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-ink-400 text-sm leading-relaxed max-w-xs">
-              专注虚拟演播室制作、舞美效果图设计、虚拟项目落地与AIGC工具开发。将前沿技术与艺术创意结合，打造卓越视觉体验。
+              专注虚拟演播室、XR/AR 包装、LED 虚拟制作与 AIGC 数字内容协同落地，将前沿技术与艺术创意转化为稳定可交付的视觉项目。
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (

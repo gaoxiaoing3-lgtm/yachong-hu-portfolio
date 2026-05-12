@@ -77,7 +77,7 @@ const capabilityCards = [
   },
   {
     label: '组织协调',
-    text: '能够承担项目技术负责人、实施负责人或技术顾问角色，统筹方案沟通、执行落地、培训支持与协同配合。',
+    text: '能够承担虚拟制作落地、现场实施、技术顾问与项目协同角色，统筹方案沟通、执行交付、培训支持与团队配合。',
   },
 ]
 
@@ -101,7 +101,7 @@ const About = () => {
             工作履历
           </h1>
           <p className="text-ink-700 mt-6 max-w-3xl leading-relaxed text-lg md:text-xl">
-            胡亚崇，XR / VR / AR 技术专家、虚拟制作技术负责人。2012 年至今长期深耕广电节目、
+            胡亚崇，虚拟制作与 AI 数字内容解决方案实践者。2012 年至今长期深耕广电节目、
             品牌活动、赛事转播、虚拟演播室及 XR 直播项目，具备从方案设计、视觉包装到系统联调、
             现场实施与项目统筹的完整落地经验。
           </p>
@@ -130,7 +130,7 @@ const About = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl bg-white/5 p-5">
                   <div className="font-mono text-xs text-primary-300 uppercase tracking-widest mb-2">岗位定位</div>
-                  <div className="text-base leading-relaxed text-white">XR / VR / AR 技术专家、虚拟制作技术负责人</div>
+                  <div className="text-base leading-relaxed text-white">虚拟制作与 AI 数字内容解决方案实践者</div>
                 </div>
                 <div className="rounded-2xl bg-white/5 p-5">
                   <div className="font-mono text-xs text-primary-300 uppercase tracking-widest mb-2">从业时间</div>

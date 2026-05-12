@@ -110,11 +110,11 @@ const Home = () => {
                     <h1 className="mt-6 font-display text-[3.35rem] font-semibold leading-[0.94] tracking-[0.01em] text-white drop-shadow-[0_12px_28px_rgba(0,0,0,0.46)] md:text-[4.7rem] xl:text-[5.6rem]">
                       虚拟空间构建
                       <br />
-                      技术负责人
+                      解决方案实践者
                     </h1>
 
                     <p className="mt-7 max-w-2xl text-base leading-relaxed text-white/62 md:text-lg">
-                      长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，聚焦虚拟演播室、AR 包装、LED 虚拟制作、系统联调与现场技术落地。
+                      长期服务于广电节目、品牌活动、赛事转播与 XR 直播项目，擅长将虚拟演播室、AR 包装、LED 虚拟制作与 AIGC 流程转化为可交付的视觉项目。
                     </p>
 
                     <div className="mt-8 flex flex-wrap gap-3">
