@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-const root = process.cwd()
+const root = path.resolve(new URL('..', import.meta.url).pathname)
 const bridgeMemoryDir = process.env.WUDI_MEMORY_DIR || '/Users/jingqi/Documents/ask/weixin-codex-bridge/memory'
 const outPath = path.join(root, 'public', 'wudi-memory.json')
 
