@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import WudiPanel from './pages/WudiPanel'
 
 function AppShell() {
   const location = useLocation()
@@ -33,6 +34,7 @@ function AppShell() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/wudi" element={<WudiPanel />} />
           </Routes>
         </motion.main>
       </AnimatePresence>

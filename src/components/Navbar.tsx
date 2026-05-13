@@ -13,6 +13,7 @@ const Navbar = () => {
     { name: '作品集', path: '/portfolio' },
     { name: '关于我', path: '/about' },
     { name: '联系', path: '/contact' },
+    { name: '心法面板', path: '/wudi' },
   ]
 
   return (
