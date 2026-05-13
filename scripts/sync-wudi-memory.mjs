@@ -35,13 +35,8 @@ const data = {
     { key: '择道', name: '命途', value: oplus ? 84 : 80, stars: '★★★★☆', note: '虚拟制作 + AIGC' },
     { key: '守门', name: '边界', value: reimbursementDone ? 90 : 80, stars: '★★★★☆', note: '财务防错 / 风险防守' }
   ],
-  tasks: [
-    { title: '报销提交前复核', type: '破局 + 守门', state: reimbursementDone ? '提交前复核' : '进行中', stars: reimbursementDone ? '★★★★★' : '★★★★☆' },
-    { title: 'OPLUS 渲染引擎', type: '择道 + 藏器', state: oplus ? '今日主线' : '规划中', stars: '★★★★☆' },
-    { title: '无敌心法角色面板', type: '藏器 + 破局', state: panel ? 'MVP 已落地' : 'MVP', stars: '★★★★☆' }
-  ],
   breakthroughs: [
-    reimbursementDone ? '从抗拒半年报销，到完成表格、142 个文件上传与提交前复核。' : '正在把报销从混乱拆成流程。',
+    reimbursementDone ? '完成一次消耗型事务的破局训练，行动、耐力与边界感明显提升。' : '正在训练把混乱事务拆成可执行流程。',
     '从“技术负责人”校准为“虚拟制作与 AI 数字内容解决方案实践者”。',
     panel ? '无敌心法角色面板已落地到个人网站 /wudi。' : '把微信对话、提醒、记忆系统接成本地成长反馈闭环。'
   ]

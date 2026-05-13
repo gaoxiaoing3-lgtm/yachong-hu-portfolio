@@ -3,13 +3,11 @@ import { motion } from 'framer-motion'
 import { Shield, Flame, Bone, Eye, Waves, KeyRound, Compass, Sparkles, Sword, CheckCircle2 } from 'lucide-react'
 
 type Stat = { key: string; name: string; value: number; stars: string; note: string }
-type Task = { title: string; type: string; state: string; stars: string }
 type WudiMemory = {
   updatedAt?: string
   realm: string
   mainline: string
   stats: Stat[]
-  tasks: Task[]
   breakthroughs: string[]
 }
 
@@ -26,11 +24,6 @@ const fallbackData: WudiMemory = {
     { key: '藏器', name: '实力', value: 76, stars: '★★★★☆', note: '网站 / GitHub / 引擎' },
     { key: '择道', name: '命途', value: 80, stars: '★★★★☆', note: '虚拟制作 + AIGC' },
     { key: '守门', name: '边界', value: 86, stars: '★★★★☆', note: '财务防错 / 风险防守' },
-  ],
-  tasks: [
-    { title: '报销提交前复核', type: '破局 + 守门', state: '进行中', stars: '★★★★★' },
-    { title: 'OPLUS 渲染引擎', type: '择道 + 藏器', state: '今日主线', stars: '★★★★☆' },
-    { title: '无敌心法角色面板', type: '藏器 + 破局', state: 'MVP', stars: '★★★★☆' },
   ],
   breakthroughs: [
     '从抗拒半年报销，到完成表格、142 个文件上传与提交前复核。',
@@ -84,7 +77,7 @@ const WudiPanel = () => {
           <main className="space-y-8">
             <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="pt-4">
               <div className="font-mono text-xs uppercase tracking-[0.3em] text-[#d7c37a]">Nine Core Attributes</div>
-              <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight md:text-6xl">从 memory 系统读取的角色状态。</h2>
+              <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight md:text-6xl">从 memory 系统读取的心法进度。</h2>
             </motion.div>
 
             <div className="grid gap-3 md:grid-cols-3">
@@ -113,17 +106,24 @@ const WudiPanel = () => {
 
           <motion.aside initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.14, duration: 0.7, ease: [0.22, 1, 0.36, 1] }} className="space-y-8 rounded-[2rem] border border-white/12 bg-black/20 p-7 backdrop-blur-2xl">
             <section>
-              <div className="font-mono text-xs uppercase tracking-[0.28em] text-white/42">Today Quests</div>
+              <div className="font-mono text-xs uppercase tracking-[0.28em] text-white/42">Cultivation Focus</div>
               <div className="mt-5 space-y-5">
-                {data.tasks.map((task) => (
-                  <div key={task.title} className="border-b border-white/10 pb-5 last:border-0">
-                    <div className="flex items-start justify-between gap-4">
-                      <div><div className="text-lg">{task.title}</div><div className="mt-1 text-xs text-white/42">{task.type}</div></div>
-                      <div className="rounded-full border border-[#d7c37a]/30 px-3 py-1 text-xs text-[#d7c37a]">{task.state}</div>
+                {data.stats
+                  .slice()
+                  .sort((a, b) => b.value - a.value)
+                  .slice(0, 3)
+                  .map((item) => (
+                    <div key={item.key} className="border-b border-white/10 pb-5 last:border-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <div className="text-lg">{item.key} · {item.name}</div>
+                          <div className="mt-1 text-xs text-white/42">{item.note}</div>
+                        </div>
+                        <div className="rounded-full border border-[#d7c37a]/30 px-3 py-1 text-xs text-[#d7c37a]">{item.value}%</div>
+                      </div>
+                      <div className="mt-3 font-mono text-xs text-white/58">{item.stars}</div>
                     </div>
-                    <div className="mt-3 font-mono text-xs text-white/58">{task.stars}</div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </section>
 
